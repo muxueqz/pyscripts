@@ -827,7 +827,7 @@ sed -i 's/# spice_listen = &amp;quot;0.0.0.0&amp;quot;/spice_listen = &amp;quot;
 &lt;!-- cmdline: txt2tags -t rst -o /data/software/muxueqztools/py/myblog/blog-new/src/archipel.rst archipel.t2t --&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</content><category term="kvm"></category><category term="archipel"></category></entry><entry><title>KDE-Telepathy关闭后离线的解决办法</title><link href="http://muxueqz.coding.me/KDE-Telepathy%E5%85%B3%E9%97%AD%E5%90%8E%E7%A6%BB%E7%BA%BF%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.html" rel="alternate"></link><published>2012-08-22T21:55:03+08:00</published><updated>2012-08-22T21:55:03+08:00</updated><author><name>muxueqz</name></author><id>tag:muxueqz.coding.me,2012-08-22:/KDE-Telepathy关闭后离线的解决办法.html</id><summary type="html">&lt;hr class="docutils" /&gt;
+</content><category term="kvm"></category><category term="archipel"></category></entry><entry><title>KDE-Telepathy关闭后离线的解决办法</title><link href="http://muxueqz.coding.me/ktp_offine.html" rel="alternate"></link><published>2012-08-22T21:55:03+08:00</published><updated>2012-08-22T21:55:03+08:00</updated><author><name>muxueqz</name></author><id>tag:muxueqz.coding.me,2012-08-22:/ktp_offine.html</id><summary type="html">&lt;hr class="docutils" /&gt;
 &lt;div class="section" id="id1"&gt;
 &lt;h2&gt;1. 介绍&lt;/h2&gt;
 &lt;p&gt;新开发的KDE即时通讯程序telepathy-kde
@@ -4613,7 +4613,7 @@ VMware Workstation for Linux，用着用着经常会发现，回到Host系统后
 泉水清者，乃源不尽；人力胜者，以新无穷。&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;身为大患，亦为大倚。故身存则患不尽，所可倚者亦无穷。
 泉水清者，乃源不尽；人力胜者，以新无穷。&lt;/p&gt;
-</content></entry><entry><title>Alsa-utils使用方法</title><link href="http://muxueqz.coding.me/Alsa-utils%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95.html" rel="alternate"></link><published>2009-07-12T14:54:44+08:00</published><updated>2009-07-12T14:54:44+08:00</updated><author><name>muxueqz</name></author><id>tag:muxueqz.coding.me,2009-07-12:/Alsa-utils使用方法.html</id><summary type="html">&lt;p&gt;注: 前面大部分为转载&amp;nbsp;&lt;a class="reference external" href="http://www.turbolinux.com"&gt;http://www.turbolinux.com&lt;/a&gt;.cn中的Wiki&lt;/p&gt;
+</content></entry><entry><title>Alsa-utils使用方法</title><link href="http://muxueqz.coding.me/alsa-utils.html" rel="alternate"></link><published>2009-07-12T14:54:44+08:00</published><updated>2009-07-12T14:54:44+08:00</updated><author><name>muxueqz</name></author><id>tag:muxueqz.coding.me,2009-07-12:/alsa-utils.html</id><summary type="html">&lt;p&gt;注: 前面大部分为转载&amp;nbsp;&lt;a class="reference external" href="http://www.turbolinux.com"&gt;http://www.turbolinux.com&lt;/a&gt;.cn中的Wiki&lt;/p&gt;
 &lt;p&gt;一.alsa-utils介绍&lt;/p&gt;
 &lt;p&gt;ALSA是kernel中的一个声音驱动程序.它包括alsa核心和其他声卡的驱动.
 alsa-utils是alsa的一个工具包,里面包含有声卡测试和音频编辑的工具.
