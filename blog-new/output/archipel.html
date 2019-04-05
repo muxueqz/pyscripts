@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+  <head>
+       <meta charset="utf-8">
+    <title>kvm的虚拟化管理方案-Archipel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="http://muxueqz.coding.me/theme/css/bootstrap.min.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="http://muxueqz.coding.me/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="http://muxueqz.coding.me/theme/css/font-awesome.css" rel="stylesheet">
+
+    <link href="http://muxueqz.coding.me/theme/css/pygments.css" rel="stylesheet">
+    <link href="http://muxueqz.coding.me/theme/css/local.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="http://muxueqz.coding.me/theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="http://muxueqz.coding.me/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://muxueqz.coding.me/theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://muxueqz.coding.me/theme/images/apple-touch-icon-114x114.png">
+
+    <link href="http://muxueqz.coding.me/all.atom.xml" type="application/atom+xml" rel="alternate" title="聊逍遥兮容与 ATOM Feed" />
+
+   <meta name="author"   content="muxueqz" />
+   <meta name="keywords" content="kvm, archipel" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="http://muxueqz.coding.me/index.html">聊逍遥兮容与 </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/Python.html">
+						<i class="icon-folder-open icon-large"></i>Python
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/misc.html">
+						<i class="icon-folder-open icon-large"></i>misc
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/nim.html">
+						<i class="icon-folder-open icon-large"></i>nim
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/旧文.html">
+						<i class="icon-folder-open icon-large"></i>旧文
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/桌面应用.html">
+						<i class="icon-folder-open icon-large"></i>桌面应用
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/生活.html">
+						<i class="icon-folder-open icon-large"></i>生活
+					</a>
+                  </li>
+                  <li class="active">
+                    <a href="http://muxueqz.coding.me/category/系统运维.html">
+						<i class="icon-folder-open icon-large"></i>系统运维
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/阅读.html">
+						<i class="icon-folder-open icon-large"></i>阅读
+					</a>
+                  </li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="http://muxueqz.coding.me/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                                <li><a href="http://muxueqz.coding.me/start-page.html"><i class="icon-th-list"></i>留言板</a></li>
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to kvm的虚拟化管理方案-Archipel">
+                                        kvm的虚拟化管理方案-Archipel
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2012-08-23T00:23:33+08:00">
+        <i class="icon-calendar"></i>四 23 八月 2012
+</abbr>
+<span class="label">By</span>
+<a href="http://muxueqz.coding.me/author/muxueqz.html"><i class="icon-user"></i>muxueqz</a>
+<span class="label">Category</span>
+<a href="http://muxueqz.coding.me/category/系统运维.html"><i class="icon-folder-open"></i>系统运维</a>.
+
+
+<span class="label">Tags</span>
+	<a href="http://muxueqz.coding.me/tag/kvm.html"><i class="icon-tag"></i>kvm</a>
+	<a href="http://muxueqz.coding.me/tag/archipel.html"><i class="icon-tag"></i>archipel</a>
+</footer><!-- /.post-info -->                </div>
+                <hr class="docutils" />
+<div class="section" id="archipel">
+<h2>1. Archipel介绍</h2>
+<ul class="simple">
+<li>一个开源的虚拟化管理方案</li>
+<li><strong>基于libvirt,可以方便的将virt-manager/virsh/virt-install等方式创建的虚拟机导入进来</strong></li>
+<li>使用XMPP协议(Extensible Messaging and Presence Protocol)通信,成熟的通信协议,Gtalk就是用XMPP.</li>
+</ul>
+<blockquote>
+<ul class="simple">
+<li>XMPP从某种程度来说相当于消息队列</li>
+<li>XMPP Server使用ejabberd,一个流行的支持高并发的XMPP Server,同时又有扩容和集群设计</li>
+<li>因为XMPP的特性,Archipel号称实时管理</li>
+<li>同样也是XMPP的优势,可选其它客户端,只要支持XMPP即可.</li>
+</ul>
+<blockquote>
+<ul class="simple">
+<li>这意味着,手机上也可以管理虚拟机了!</li>
+</ul>
+</blockquote>
+</blockquote>
+<ul class="simple">
+<li>支持多帐号和权限配置</li>
+<li>支持实时迁移</li>
+<li><strong>VMCasts功能可以很方便的制作和分发虚拟机模板</strong></li>
+<li>UI用户界面是测试使用过的开源虚拟化管理平台中(CloudStack/oVirt/OpenQRM/Ganeti Web Manager/proxmox/OpenStack/)**最易用**的</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2>2. 概念</h2>
+<p>Host = 安装kvm，直接运行在硬件上的操作系统</p>
+<p>Guest = 跑在Host中的虚拟机</p>
+<p>XMPP = 可扩展消息协议</p>
+</div>
+<div class="section" id="id2">
+<h2>3. 预览</h2>
+<img alt="" class="align-center" src="http://wiki.muxueqztools.googlecode.com/hg/t2t/img/archipel.png" />
+</div>
+<div class="section" id="id3">
+<h2>4. 需要安装的软件</h2>
+<ul class="simple">
+<li>qemu-kvm 0.12以上版本，编译时开启spice选项</li>
+<li>spice-client，客户端连接需要，服务器可以不装</li>
+<li>libvirt，安装于每台KVM主机，提供虚拟化管理的API</li>
+<li>archipel-agent，安装于每台KVM主机，调用libvirt来管理虚拟机，由Archipel的Web GUI来调用。</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>5. 安装</h2>
+<div class="section" id="kvm">
+<h3>5.1. KVM主机</h3>
+<pre class="literal-block">
+#!highlight bash
+yum install libvirt libvirt-python python-setuptools python-devel numpy
+easy_install archipel-agent
+</pre>
+</div>
+<div class="section" id="xmpp-server">
+<h3>5.2. XMPP Server</h3>
+<div class="section" id="bin">
+<h4>5.2.1. bin方式</h4>
+<pre class="literal-block">
+#去 http://www.process-one.net/en/ejabberd/downloads 下载对应的安装包，文件名类似 ejabberd-2.1.10-linux-x86_64-installer.bin
+chmod +x ejabberd-2.1.10-linux-x86_64-installer.bin
+./ejabberd-2.1.10-linux-x86_64-installer.bin
+#然后一路回车
+#您接受这个软件授权协议吗? [y/n]: y
+#安装目录 [/opt/ejabberd-2.1.10]:
+#ejabberd服务器域名  [localhost]: your.fqdn.com
+#管理员用户名  [admin]:
+#管理员密码  :123456
+#重新输入密码  :123456
+#集群 [y/N]:
+#您确定要继续? [Y/n]:
+#OK
+useradd ejabberd
+chown -R ejabberd /opt/ejabberd-2.1.10
+</pre>
+</div>
+<div class="section" id="yum-rpm">
+<h4>5.2.2. (可选)Yum/rpm方式</h4>
+<pre class="literal-block">
+#!highlight bash
+rpm -ivh http://mirrors.ustc.edu.cn/fedora/epel/6/i386/epel-release-6-5.noarch.rpm
+#rpm -ivh 'ftp://ftp.muug.mb.ca/mirror/centos/6.2/os/x86_64/Packages/libntlm-1.0-3.el6.x86_64.rpm'
+#yum install ejabberd
+</pre>
+</div>
+<div class="section" id="id5">
+<h4>5.2.3. 配置XMPP Server</h4>
+<div class="section" id="id6">
+<h5>5.2.3.1. 使用打包好的配置</h5>
+<pre class="literal-block">
+#!highlight bash
+wget https://wiki.muxueqztools.googlecode.com/hg/ejabberd.cfg -O /opt/ejabberd-2.1.10/conf/ejabberd.cfg
+sed -i 's/xmpp.example.com/your.FQDN.com/g' /opt/ejabberd-2.1.10/conf/ejabberd.cfg'
+#启动服务
+/opt/ejabberd-2.1.10/bin/ejabberd.init  start
+</pre>
+</div>
+<div class="section" id="id7">
+<h5>5.2.3.2. (可选)手动配置</h5>
+<pre class="literal-block">
+#修改DNS解析，在DNS Server或/etc/hosts中添加下面一行
+X.X.X.X    your.fqdn.com #X.X.X.X为XMPP Server的IP，your.fqdn.com是你XMPP的域名
+#剩余的按照 https://github.com/primalmotion/Archipel/wiki/Ejabberd%3A-Configuration 中的配置
+</pre>
+</div>
+<div class="section" id="id8">
+<h5>5.2.3.3. 参考配置</h5>
+<p>[[/ejabberd.cfg]]</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="kvmarchipel">
+<h2>6. 将KVM主机添加到Archipel管理中</h2>
+<div class="section" id="archipel-agent">
+<h3>6.1. 添加第一个Archipel-agent</h3>
+<pre class="literal-block">
+#!highlight bash
+#初始化生成Archipel-agent配置文件
+archipel-initinstall -x your.FQDN.com
+#初始化XMPP Server上的数据
+archipel-tagnode --jid=admin&#64;FQDN --password=YOURPASSWORD --create
+archipel-rolesnode --jid=admin&#64;FQDN --password=YOURPASSWORD --create
+archipel-adminaccounts --jid=admin&#64;FQDN --password=YOURPASSWORD --create
+archipel-vmparkingnode --jid=admin&#64;FQDN --password=YOURPASSWORD --create
+[OPTIONAL] archipel-vmrequestnode --jid=admin&#64;FQDN --password=YOURPASSWORD --create
+
+#启动libvirtd
+/etc/init.d/libvirtd start
+
+#将Archipel-agent添加到XMPP Server中
+archipel-vmparkingnode --jid=admin&#64;FQDN --password=YOURPASSWORD -a hypervisor_jid&#64;FQDN
+/etc/init.d/archipel start
+</pre>
+<p><strong>以后的Archipel-agent不需要执行上面的命令，执行下面的即可</strong></p>
+<pre class="literal-block">
+#!highlight bash
+archipel-initinstall -x your.FQDN.com
+archipel-vmparkingnode --jid=admin&#64;FQDN --password=YOURPASSWORD -a hypervisor_jid&#64;FQDN
+/etc/init.d/libvirtd start
+/etc/init.d/archipel start
+</pre>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>7. 注意事项</h2>
+<div class="section" id="libvirt">
+<h3>7.1. 修改libvirt连接数限制</h3>
+<p>默认情况下，libvirt中限制最多只有20个客户端连接
+当虚拟机数量接近的时候，可能会出现这样的错误报告 ：</p>
+<pre class="literal-block">
+error: Failed to reconnect to the hypervisor
+error: no valid connection
+error: Cannot recv data: Connection reset by peer
+</pre>
+<p>可以加大：</p>
+<pre class="literal-block">
+echo 'max_clients = 200' &gt;&gt; /etc/libvirt/libvirtd.conf
+</pre>
+</div>
+<div class="section" id="libvirt-spice">
+<h3>7.2. 修改libvirt spice侦听地址</h3>
+<p>默认情况下，libvirt中的spice侦听的是127.0.0.1，我们需要改为0.0.0.0</p>
+<pre class="literal-block">
+sed -i 's/# spice_listen = &quot;0.0.0.0&quot;/spice_listen = &quot;0.0.0.0&quot;/g' /etc/libvirt/qemu.conf
+</pre>
+<p>即可</p>
+<!-- rst code generated by txt2tags 2.6.971 (http://txt2tags.org) -->
+<!-- cmdline: txt2tags -t rst -o /data/software/muxueqztools/py/myblog/blog-new/src/archipel.rst archipel.t2t -->
+</div>
+</div>
+
+                </div><!-- /.entry-content -->
+
+                <div class="comments">
+<!-- Duoshuo Comment BEGIN ->
+        <div class="ds-thread"></div>
+        <script type="text/javascript">
+        var duoshuoQuery = {short_name:"linuxzh"};
+        (function() {
+                var ds = document.createElement('script');
+                ds.type = 'text/javascript';ds.async = true;
+                ds.src = 'http://static.duoshuo.com/embed.js';
+                ds.charset = 'UTF-8';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+        </script>
+<!- Duoshuo Comment END -->
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" id="UYScript" src="http://v1.uyan.cc/js/iframe.js?UYUserId=1656589" async=""></script>
+<!-- UY END -->
+        </article>
+</section>
+        </div><!--/span-->
+
+                <div class="span3 well sidebar-nav" id="sidebar">
+<li class="nav-header"><h4><i class="icon-search"></i>Google Search</h4></li>
+<script>
+  (function() {
+    var cx = '015843441167976195048:WMX571863674';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+<ul class="nav nav-list">
+<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
+    <li><i class="icon-external-link"></i><a href="http://zhangwenli.com/blog/">羡辙杂俎</a></li>
+    <li><i class="icon-external-link"></i><a href="http://python.org">Python.org</a></li>
+
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="http://muxueqz.coding.me/category/Python.html">
+    <i class="icon-folder-open icon-large"></i>Python
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/misc.html">
+    <i class="icon-folder-open icon-large"></i>misc
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/nim.html">
+    <i class="icon-folder-open icon-large"></i>nim
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/旧文.html">
+    <i class="icon-folder-open icon-large"></i>旧文
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/桌面应用.html">
+    <i class="icon-folder-open icon-large"></i>桌面应用
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/生活.html">
+    <i class="icon-folder-open icon-large"></i>生活
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/系统运维.html">
+    <i class="icon-folder-open icon-large"></i>系统运维
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/阅读.html">
+    <i class="icon-folder-open icon-large"></i>阅读
+</a>
+</li>
+
+<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+
+<!-- UY BEGIN -->
+<div id="uyan_list_time_frame"></div>
+<script type="text/javascript" id="UYScriptTime" src="http://v1.uyan.cc/js/iframe_time_list.js?UYUserId=1656589&rankType=time" async=""></script>
+<!-- UY END -->
+
+<!-- UJian Button BEGIN -->
+<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?type=slide&uid=1656589"></script>
+<!-- UJian Button END -->
+
+<!-- Place this tag where you want the badge to render. -->
+<div class="g-plus" data-height="69" data-href="//plus.google.com/104598852475031863065?rel=author"></div>
+<!-- Place this tag where you want the +1 button to render. -->
+<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+<!-- Place this tag after the last badge tag. -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'zh-CN'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>							
+
+</ul>        </div><!--/.well -->
+
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <address id="about">
+                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
+                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
+        </address><!-- /#about -->
+
+        <p>The theme is from <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
+                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+	var pageTracker = _gat._getTracker("UA-33825897-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://muxueqz.coding.me/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="http://muxueqz.coding.me/theme/js/bootstrap.min.js"></script>
+  </body>
+</html>

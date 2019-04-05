@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+  <head>
+       <meta charset="utf-8">
+    <title>清除grub的方法（转）</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="http://muxueqz.coding.me/theme/css/bootstrap.min.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="http://muxueqz.coding.me/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="http://muxueqz.coding.me/theme/css/font-awesome.css" rel="stylesheet">
+
+    <link href="http://muxueqz.coding.me/theme/css/pygments.css" rel="stylesheet">
+    <link href="http://muxueqz.coding.me/theme/css/local.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="http://muxueqz.coding.me/theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="http://muxueqz.coding.me/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://muxueqz.coding.me/theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://muxueqz.coding.me/theme/images/apple-touch-icon-114x114.png">
+
+    <link href="http://muxueqz.coding.me/all.atom.xml" type="application/atom+xml" rel="alternate" title="聊逍遥兮容与 ATOM Feed" />
+
+   <meta name="author"   content="muxueqz" />
+   <meta name="keywords" content="" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="http://muxueqz.coding.me/index.html">聊逍遥兮容与 </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/Python.html">
+						<i class="icon-folder-open icon-large"></i>Python
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/misc.html">
+						<i class="icon-folder-open icon-large"></i>misc
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/nim.html">
+						<i class="icon-folder-open icon-large"></i>nim
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/旧文.html">
+						<i class="icon-folder-open icon-large"></i>旧文
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/桌面应用.html">
+						<i class="icon-folder-open icon-large"></i>桌面应用
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/生活.html">
+						<i class="icon-folder-open icon-large"></i>生活
+					</a>
+                  </li>
+                  <li class="active">
+                    <a href="http://muxueqz.coding.me/category/系统运维.html">
+						<i class="icon-folder-open icon-large"></i>系统运维
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/阅读.html">
+						<i class="icon-folder-open icon-large"></i>阅读
+					</a>
+                  </li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="http://muxueqz.coding.me/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                                <li><a href="http://muxueqz.coding.me/start-page.html"><i class="icon-th-list"></i>留言板</a></li>
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to 清除grub的方法（转）">
+                                        清除grub的方法（转）
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2009-06-15T12:01:01+08:00">
+        <i class="icon-calendar"></i>一 15 六月 2009
+</abbr>
+<span class="label">By</span>
+<a href="http://muxueqz.coding.me/author/muxueqz.html"><i class="icon-user"></i>muxueqz</a>
+<span class="label">Category</span>
+<a href="http://muxueqz.coding.me/category/系统运维.html"><i class="icon-folder-open"></i>系统运维</a>.
+
+
+</footer><!-- /.post-info -->                </div>
+                <dl class="docutils">
+<dt>grub是一个非常好的引导程序，它可以引导多操作系统。当windows和linux共存时，删除grub直接进入windows方法：</dt>
+<dd>方案1：
+用DOS命令fdisk恢复主引导扇区MBR（Main/Master Boot Record）
+－－－用win98的引导盘或DOS引导盘引导系统到纯DOS提示符下，执行：&quot;fdisk</dd>
+<dt>/mbr&quot;即可。</dt>
+<dd>方案2：
+在Linux系统中，恢复MBR。(如果你还能登陆到Linux系统中的话)
+－－－在终端的命令提示符后输入: &quot;dd if=/boot/boot.NNNN of=/dev/hda bs=446</dd>
+<dt>count=1&quot;</dt>
+<dd>注意，其中bs（buffer size)是指重写的字节数。为什么不是512呢？主引导扇区是一个扇区(512字节呀)，因为我们只是想通过扇面的命令修复系统MBR的引导或删除 Grub/LILO引导；而不是恢复整个主引导扇区。所以我们只把主引导扇区的备份文件boot.NNNN的前446个字节重写入主引导扇区。</dd>
+<dt>boot.NNNN是我们在安装Linux之前整个主引导分区的备份。如果我们把512个字节全部写入主引导扇区就可能会把安装了Linux后改变了的硬盘DPT表也破坏掉。那就坏事了!!!  (MBR的512字节中前446字节为引导程序，紧跟着后面64字节为分区表，最后面2个字节为结束标记)</dt>
+<dd>方案3：
+使用工具：Clear MBR 0.9，接运行执行“Clear MBR”即可。
+方案4：</dd>
+<dt>Linux的分区已经被你从Windows中删除，系统启动后停在“grub&gt;”提示符处。解决方法：</dt>
+<dd>（1）：按照方案1的方法
+（2）：如下
+1.在“grub&gt;”提示符后输入：“rootnoverify (hd0,0)” 回车。</dd>
+<dt>//将第一块硬盘（hd0）的第一个分区（0）设为根分区/root设备，但不加载文件系统。</dt>
+<dd>2.在“grub&gt;”提示符后输入：“chainloader ＋1”</dd>
+<dt>回车。//将启动引导权转交给当前分区的首扇区（Windows系统所在分区的首扇区）。</dt>
+<dd>3.在“grub&gt;”提示符后输入：“boot” 回车。系统将启动Windows。如果不成功，则表明 (hd0,0) 不是 Windows 系统所在分区，再从第一步开始试一下“root (hd0,1)/root (hd0,2)/root (hd0,3)/…”，总之这样一定可以引导启动你的Windows系统。
+4.好了，进入Windows了，请采用方案3的方法，轻松搞定！
+（3）：用 WINDOWS 盘启动，进入 console 模式，运行 fixboot 和 fixmbr。fixmbr命令用于修复启动磁盘的主启动记录，它仅在使用故障恢复控制台时才可用，它的语法是：fixmbr [device_name]，参数device_name是要写入新的主引导记录的设备（驱动器），设备名称可从 map 命令的输出获得。例如，设备名称：DeviceHardDisk0，下列命令示例向指定设备写入一个新的主引导记录：fixmbr DeviceHardDisk0
+注意：
+·如果不指定 device_name，新的主引导记录将被写入引导设备，即装载主系统的驱动器。</dd>
+</dl>
+<p>·如果系统检测到无效或非标准分区表标记，将提示用户是否继续执行该命令。除非您访问驱动器有问题，否则不要继续进行。向系统分区写入新的主引导记录可能破坏分区表并导致分区无法访问。</p>
+
+                </div><!-- /.entry-content -->
+
+                <div class="comments">
+<!-- Duoshuo Comment BEGIN ->
+        <div class="ds-thread"></div>
+        <script type="text/javascript">
+        var duoshuoQuery = {short_name:"linuxzh"};
+        (function() {
+                var ds = document.createElement('script');
+                ds.type = 'text/javascript';ds.async = true;
+                ds.src = 'http://static.duoshuo.com/embed.js';
+                ds.charset = 'UTF-8';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+        </script>
+<!- Duoshuo Comment END -->
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" id="UYScript" src="http://v1.uyan.cc/js/iframe.js?UYUserId=1656589" async=""></script>
+<!-- UY END -->
+        </article>
+</section>
+        </div><!--/span-->
+
+                <div class="span3 well sidebar-nav" id="sidebar">
+<li class="nav-header"><h4><i class="icon-search"></i>Google Search</h4></li>
+<script>
+  (function() {
+    var cx = '015843441167976195048:WMX571863674';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+<ul class="nav nav-list">
+<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
+    <li><i class="icon-external-link"></i><a href="http://zhangwenli.com/blog/">羡辙杂俎</a></li>
+    <li><i class="icon-external-link"></i><a href="http://python.org">Python.org</a></li>
+
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="http://muxueqz.coding.me/category/Python.html">
+    <i class="icon-folder-open icon-large"></i>Python
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/misc.html">
+    <i class="icon-folder-open icon-large"></i>misc
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/nim.html">
+    <i class="icon-folder-open icon-large"></i>nim
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/旧文.html">
+    <i class="icon-folder-open icon-large"></i>旧文
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/桌面应用.html">
+    <i class="icon-folder-open icon-large"></i>桌面应用
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/生活.html">
+    <i class="icon-folder-open icon-large"></i>生活
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/系统运维.html">
+    <i class="icon-folder-open icon-large"></i>系统运维
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/阅读.html">
+    <i class="icon-folder-open icon-large"></i>阅读
+</a>
+</li>
+
+<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+
+<!-- UY BEGIN -->
+<div id="uyan_list_time_frame"></div>
+<script type="text/javascript" id="UYScriptTime" src="http://v1.uyan.cc/js/iframe_time_list.js?UYUserId=1656589&rankType=time" async=""></script>
+<!-- UY END -->
+
+<!-- UJian Button BEGIN -->
+<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?type=slide&uid=1656589"></script>
+<!-- UJian Button END -->
+
+<!-- Place this tag where you want the badge to render. -->
+<div class="g-plus" data-height="69" data-href="//plus.google.com/104598852475031863065?rel=author"></div>
+<!-- Place this tag where you want the +1 button to render. -->
+<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+<!-- Place this tag after the last badge tag. -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'zh-CN'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>							
+
+</ul>        </div><!--/.well -->
+
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <address id="about">
+                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
+                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
+        </address><!-- /#about -->
+
+        <p>The theme is from <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
+                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+	var pageTracker = _gat._getTracker("UA-33825897-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://muxueqz.coding.me/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="http://muxueqz.coding.me/theme/js/bootstrap.min.js"></script>
+  </body>
+</html>

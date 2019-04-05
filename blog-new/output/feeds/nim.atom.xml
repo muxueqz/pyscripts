@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>聊逍遥兮容与 - nim</title><link href="http://muxueqz.coding.me/" rel="alternate"></link><link href="http://muxueqz.coding.me/feeds/nim.atom.xml" rel="self"></link><id>http://muxueqz.coding.me/</id><updated>2019-04-05T13:20:00+08:00</updated><entry><title>在Linux上跨平台编译OpenWRT路由器上的Nim程序</title><link href="http://muxueqz.coding.me/nim_on_openwrt.html" rel="alternate"></link><published>2019-04-05T13:20:00+08:00</published><updated>2019-04-05T13:20:00+08:00</updated><author><name>muxueqz</name></author><id>tag:muxueqz.coding.me,2019-04-05:/nim_on_openwrt.html</id><summary type="html">&lt;p&gt;Nim是个很好玩儿的语言，我们来看看怎么在路由器上运行Nim编写的程序&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="http://nim-lang.org/"&gt;Nim&lt;/a&gt; 是个很好玩儿的语言，我们来看看怎么在路由器上运行Nim编写的程序&lt;/p&gt;
+&lt;h2&gt;准备工作&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;安装好Nim编译器，如果你用Debian GNU/Linux，&lt;code&gt;apt install nim&lt;/code&gt;即可&lt;/li&gt;
+&lt;li&gt;一台mipsel的OpenWRT路由器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;写个Nim程序&lt;/h2&gt;
+&lt;p&gt;来个Hello World：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;hello world&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;准备OpenWRT的编译工具链&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;aria2c &lt;span class="s1"&gt;&amp;#39;http://archive.openwrt.org/chaos_calmer/15.05.1/ramips/mt7621/OpenWrt-SDK-15.05.1-ramips-mt7621_gcc-4.8-linaro_uClibc-0.9.33.2.Linux-x86_64.tar.bz2&amp;#39;&lt;/span&gt;
+tar xvf OpenWrt-SDK-15.05.1-ramips-mt7621_gcc-4.8-linaro_uClibc-0.9.33.2.Linux-x86_64.tar.bz2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;配置PATH环境变量，让Nim编译器找到编译工具链&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/dev/shm/OpenWrt-SDK-15.05.1-ramips-mt7621_gcc-4.8-linaro_uClibc-0.9.33.2.Linux-x86_64/staging_dir/toolchain-mipsel_1004kc+dsp_gcc-4.8-linaro_uClibc-0.9.33.2/bin/:&lt;span class="nv"&gt;$PATH&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;开始编译吧！&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;nim -d:release --opt&lt;span class="o"&gt;=&lt;/span&gt;size -d:ssl --cpu:mipsel --os:linux --gcc.exe:mipsel-openwrt-linux-gcc --gcc.linkerexe:mipsel-openwrt-linux-gcc  c  helloworld.nim
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;在我的机器上编译之后187KB，对比Golang编译出来的十几MB，真是轻量太多了，&lt;/p&gt;
+&lt;p&gt;如果还想再小，可以用&lt;code&gt;upx&lt;/code&gt;神器压缩一下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;upx -9 --best --lzma helloworld
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这样就只要70KB了，对于只有几MB ROM的路由器，真是福音&lt;/p&gt;</content><category term="openwrt"></category><category term="nim"></category></entry></feed>

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+  <head>
+       <meta charset="utf-8">
+    <title>聊逍遥兮容与</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="http://muxueqz.coding.me/theme/css/bootstrap.min.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="http://muxueqz.coding.me/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="http://muxueqz.coding.me/theme/css/font-awesome.css" rel="stylesheet">
+
+    <link href="http://muxueqz.coding.me/theme/css/pygments.css" rel="stylesheet">
+    <link href="http://muxueqz.coding.me/theme/css/local.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="http://muxueqz.coding.me/theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="http://muxueqz.coding.me/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://muxueqz.coding.me/theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://muxueqz.coding.me/theme/images/apple-touch-icon-114x114.png">
+
+    <link href="http://muxueqz.coding.me/all.atom.xml" type="application/atom+xml" rel="alternate" title="聊逍遥兮容与 ATOM Feed" />
+
+   <meta name="description" content="muxueqz (明源) 的博客，使用python和Linux进行数据分析">
+   <meta name="keywords" content="虚拟化, kvm, linux, 日志统计, python, 数据挖掘, 数据分析">
+   <meta name="author" content="muxueqz">
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="http://muxueqz.coding.me/index.html">聊逍遥兮容与 </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/Python.html">
+						<i class="icon-folder-open icon-large"></i>Python
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/misc.html">
+						<i class="icon-folder-open icon-large"></i>misc
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/nim.html">
+						<i class="icon-folder-open icon-large"></i>nim
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/旧文.html">
+						<i class="icon-folder-open icon-large"></i>旧文
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/桌面应用.html">
+						<i class="icon-folder-open icon-large"></i>桌面应用
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/生活.html">
+						<i class="icon-folder-open icon-large"></i>生活
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/系统运维.html">
+						<i class="icon-folder-open icon-large"></i>系统运维
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/阅读.html">
+						<i class="icon-folder-open icon-large"></i>阅读
+					</a>
+                  </li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="http://muxueqz.coding.me/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                                <li><a href="http://muxueqz.coding.me/start-page.html"><i class="icon-th-list"></i>留言板</a></li>
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+        <div class="article">
+                <h1><a href="http://muxueqz.coding.me/emma.html">[翻译]emma-Linux中的图形化管理Mysql的工具</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2011-01-01T03:10:17+08:00">
+        <i class="icon-calendar"></i>六 01 一月 2011
+</abbr>
+<span class="label">By</span>
+<a href="http://muxueqz.coding.me/author/muxueqz.html"><i class="icon-user"></i>muxueqz</a>
+<span class="label">Category</span>
+<a href="http://muxueqz.coding.me/category/系统运维.html"><i class="icon-folder-open"></i>系统运维</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>原文:
+<a class="reference external" href="http://www.ubuntugeek.com/emma-graphical-toolkit-for-mysql-database-developers-and-administrators.html">http://www.ubuntugeek.com/emma-graphical-toolkit-for-mysql-database-developers-and-administrators.html</a></p>
+<p>emma是一个为MySQL数据库开发人员和DBA准备的图形工具包。
+它提供了对话框，创建或修改MySQL数据库，表和关联的索引。
+执行一个查询的结果显示，数据可以由用户编辑，它允许执行SQL语句。
+SQL编辑器和结果都集中在查看选项卡。 并且可以将结果导出到CSV文件。
+可以同时打开多个MySQL连接。 emma继承了yamysqlfront。</p>
+<blockquote>
+<p>其主要特点是：
+*对话框创建/修改MySQL数据库，表和相关索引
+*在标签分组结果集
+* SQL编辑器：
++标签
++内置的语法突出显示
++表和字段名制表完成
++自动SQL语句的格式
+*导出到CSV文件
+*同时打开多个MySQL连接
+在Ubuntu中安装emma
+打开终端，运行以下命令</p>
+<blockquote>
+sudo apt-get install emma</blockquote>
+<p>截图
+<a class="reference external" href="http://www.ubuntugeek.com/wp-content/uploads/2010/12/emma.png">http://www.ubuntugeek.com/wp-content/uploads/2010/12/emma.png</a></p>
+</blockquote>
+
+                        <a class="btn primary xsmall" href="http://muxueqz.coding.me/emma.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="http://muxueqz.coding.me/godaddy_2011.html">Go  Daddy 新年优惠</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2010-12-31T07:17:23+08:00">
+        <i class="icon-calendar"></i>五 31 十二月 2010
+</abbr>
+<span class="label">By</span>
+<a href="http://muxueqz.coding.me/author/muxueqz.html"><i class="icon-user"></i>muxueqz</a>
+<span class="label">Category</span>
+<a href="http://muxueqz.coding.me/category/旧文.html"><i class="icon-folder-open"></i>旧文</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><dl class="docutils">
+<dt>Go Daddy 优惠码</dt>
+<dd>New Year's Fireworks - 31% OFF!
+gda1241bg</dd>
+</dl>
+
+                        <a class="btn primary xsmall" href="http://muxueqz.coding.me/godaddy_2011.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="http://muxueqz.coding.me/mysql_sa_commands.html">mysql运维常用命令</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2010-12-28T08:11:51+08:00">
+        <i class="icon-calendar"></i>二 28 十二月 2010
+</abbr>
+<span class="label">By</span>
+<a href="http://muxueqz.coding.me/author/muxueqz.html"><i class="icon-user"></i>muxueqz</a>
+<span class="label">Category</span>
+<a href="http://muxueqz.coding.me/category/系统运维.html"><i class="icon-folder-open"></i>系统运维</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>使用兼容mysql323的方式备份</p>
+<pre class="literal-block">
+mysqldump ,--compatible=mysql323
+Mysql表引擎更改为InnoDB
+alter table $TABLENAME type=InnoDB
+链接数据库
+mysql -h localhost -u username -p password;
+备份整个库
+mysqldump -u $USER -p $DBNAME&gt; $FILENAME
+备份单个表或几个表
+mysqldump --opt --add-drop-table -u $USER -p $DBNAME $TABLE1 $TABLE2&gt; $FILENAME
+恢复数据库
+shell&gt; mysqladmin -h $HOST -u $USER -p create $DBNAME
+shell&gt; mysql -h $HOST …</pre>
+                        <a class="btn primary xsmall" href="http://muxueqz.coding.me/mysql_sa_commands.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="http://muxueqz.coding.me/pagespeed.html">在ubuntu/debian上安装google pagespeed</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2010-12-19T02:05:37+08:00">
+        <i class="icon-calendar"></i>日 19 十二月 2010
+</abbr>
+<span class="label">By</span>
+<a href="http://muxueqz.coding.me/author/muxueqz.html"><i class="icon-user"></i>muxueqz</a>
+<span class="label">Category</span>
+<a href="http://muxueqz.coding.me/category/系统运维.html"><i class="icon-folder-open"></i>系统运维</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>Google推出mod-pagespeed免费模块用于优化Apache
+HTTP服务器框架下的网站速度。该模块从多个方面对服务器运行速度进行优化，例如可以对图片进行再压缩，通过CMS(内容管理系统)改变网页构造但不改变CMS本身等。在此次开源之前，Google内部也一直使用该模块。</p>
+<p>作用如下：</p>
+<blockquote>
+<ul class="simple">
+<li>不需要对网站 CMS 系统进行改变即可应用。</li>
+<li>加速模块可以自行对网络传输的 html 字节优化及对图象 、css 进行压缩优化传输</li>
+<li>智能缓存是一大亮点，它可以自动智能缓存，加速下载</li>
+</ul>
+</blockquote>
+<p>目前这套优化模块已经应用GoDaddy服务器上，而且反响良好。根据此前的一些实践来看， 通过mod_pagespeed可以对 Web 性能的多个方面，包括缓存、客户端与服务器之间的连接、载荷大小等进行优化，最大可将页面加载时间缩短 50% 。</p>
+<p><strong>For 32 bit</strong></p>
+<pre class="literal-block">
+wget [[https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-beta\_current\_i386.deb]]
+dpkg -i mod-pagespeed-beta …</pre>
+                        <a class="btn primary xsmall" href="http://muxueqz.coding.me/pagespeed.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="http://muxueqz.coding.me/opera_extensions.html">opera 11扩展推荐</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2010-12-15T02:51:05+08:00">
+        <i class="icon-calendar"></i>三 15 十二月 2010
+</abbr>
+<span class="label">By</span>
+<a href="http://muxueqz.coding.me/author/muxueqz.html"><i class="icon-user"></i>muxueqz</a>
+<span class="label">Category</span>
+<a href="http://muxueqz.coding.me/category/系统运维.html"><i class="icon-folder-open"></i>系统运维</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>[[<a class="reference external" href="https://addons.opera.com/addons/extensions/details/gmail-checker/">https://addons.opera.com/addons/extensions/details/gmail-checker/</a>|Gmail
+Cheker]]
+功能:检查Gmail，与chrome的gmail checker基本相同，不能桌面通知，有声音通知。</p>
+<p>[[<a class="reference external" href="https://addons.opera.com/addons/extensions/details/documents-preview/?display=en">https://addons.opera.com/addons/extensions/details/documents-preview/?display=en</a>|Documents
+preview]]
+功能:用Google Docs打开doc,xls,ppt,pdf</p>
+<p>[[<a class="reference external" href="https://addons.opera.com/addons/extensions/details/shorten-url/?display=en">https://addons.opera.com/addons/extensions/details/shorten-url/?display=en</a>|Shorten
+URL]]</p>
+<p>功能:将当前页面生成短链，可以用tinyurl,goo …</p>
+                        <a class="btn primary xsmall" href="http://muxueqz.coding.me/opera_extensions.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="http://muxueqz.coding.me/shsazp.html">代发 [招聘] 【上海-美资】大量UNIX/LINUX 系统管理员系统工程师</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2010-12-10T13:30:50+08:00">
+        <i class="icon-calendar"></i>五 10 十二月 2010
+</abbr>
+<span class="label">By</span>
+<a href="http://muxueqz.coding.me/author/muxueqz.html"><i class="icon-user"></i>muxueqz</a>
+<span class="label">Category</span>
+<a href="http://muxueqz.coding.me/category/系统运维.html"><i class="icon-folder-open"></i>系统运维</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><dl class="docutils">
+<dt>详情请见</dt>
+<dd><a class="reference external" href="http://bbs.linuxtone.org/thread-8319-1-1.html">http://bbs.linuxtone.org/thread-8319-1-1.html</a></dd>
+</dl>
+
+                        <a class="btn primary xsmall" href="http://muxueqz.coding.me/shsazp.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="http://muxueqz.coding.me/china-mobile-3g.html">中国移动3g td-scdma配置文件备份</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2010-11-30T11:04:27+08:00">
+        <i class="icon-calendar"></i>二 30 十一月 2010
+</abbr>
+<span class="label">By</span>
+<a href="http://muxueqz.coding.me/author/muxueqz.html"><i class="icon-user"></i>muxueqz</a>
+<span class="label">Category</span>
+<a href="http://muxueqz.coding.me/category/系统运维.html"><i class="icon-folder-open"></i>系统运维</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><dl class="docutils">
+<dt>cat /etc/chatscripts/3g</dt>
+<dd># This chatfile was generated by pppconfig 2.3.18.
+# Please do not delete any of the comments. Pppconfig needs them.
+#
+# ispauth PAP
+# abortstring
+ABORT BUSY ABORT 'NO CARRIER' ABORT VOICE ABORT 'NO DIALTONE' ABORT 'NO</dd>
+<dt>DIAL TONE' ABORT 'NO ANSWER' ABORT DELAYED</dt>
+<dd><p class="first"># modeminit
+'' ATZ
+'' ATE0V1
+'' ATS0 …</p></dd></dl>
+                        <a class="btn primary xsmall" href="http://muxueqz.coding.me/china-mobile-3g.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="http://muxueqz.coding.me/debian_lxc.html">在debian上测试最新进入主线内核的容器虚拟化-lxc</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2010-11-18T12:25:06+08:00">
+        <i class="icon-calendar"></i>四 18 十一月 2010
+</abbr>
+<span class="label">By</span>
+<a href="http://muxueqz.coding.me/author/muxueqz.html"><i class="icon-user"></i>muxueqz</a>
+<span class="label">Category</span>
+<a href="http://muxueqz.coding.me/category/系统运维.html"><i class="icon-folder-open"></i>系统运维</a>.
+
+
+<span class="label">Tags</span>
+	<a href="http://muxueqz.coding.me/tag/lxc.html"><i class="icon-tag"></i>lxc</a>
+	<a href="http://muxueqz.coding.me/tag/debian.html"><i class="icon-tag"></i>debian</a>
+	<a href="http://muxueqz.coding.me/tag/虚拟化.html"><i class="icon-tag"></i>虚拟化</a>
+	<a href="http://muxueqz.coding.me/tag/虚拟机.html"><i class="icon-tag"></i>虚拟机</a>
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p><strong>介绍</strong>
+Linux conatiners (LXC) 是在Linux平台上基于容器的虚拟化技术的未来标准，它和传统的解决方案如Linux-VServer和OpenVZ有所区别。最初的LXC技术是由IBM研发的，目前已经进入Linux内核主线，这意味着LXC技术将是目前最有竞争力的轻量级虚拟容器技术，相比较传统的VServer和OpenVZ轻量级虚拟技术（两者都需要对标准内核进行补丁），发展潜力更大。</p>
+<p>详细内容请看[[<a class="reference external" href="http://huatai.me/?p=573">http://huatai.me/?p=573</a>|阿泰的lxc介绍]]
+deb <a class="reference external" href="http://mirrors.sohu.com/debian/">http://mirrors.sohu.com/debian/</a> lenny main non-free contrib
+以下是openvz guest to lxc 的转换脚本:</p>
+<pre class="literal-block">
+#!/bin/bash
+
+#
+# lxc: linux Container library
+
+# Authors:
+# zhangmingyuan240&#64;gmail.com
+
+# This library is free software; you …</pre>
+                        <a class="btn primary xsmall" href="http://muxueqz.coding.me/debian_lxc.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+
+        <div class="pagination">
+        <ul>
+                        <li class="prev"><a href="http://muxueqz.coding.me/index5.html">&larr; Previous</a></li>
+                        <li class=""><a href="http://muxueqz.coding.me/index.html">1</a></li>
+                        <li class=""><a href="http://muxueqz.coding.me/index2.html">2</a></li>
+                        <li class=""><a href="http://muxueqz.coding.me/index3.html">3</a></li>
+                        <li class=""><a href="http://muxueqz.coding.me/index4.html">4</a></li>
+                        <li class=""><a href="http://muxueqz.coding.me/index5.html">5</a></li>
+                        <li class="active"><a href="http://muxueqz.coding.me/index6.html">6</a></li>
+                        <li class=""><a href="http://muxueqz.coding.me/index7.html">7</a></li>
+                        <li class=""><a href="http://muxueqz.coding.me/index8.html">8</a></li>
+                        <li class=""><a href="http://muxueqz.coding.me/index9.html">9</a></li>
+                        <li class=""><a href="http://muxueqz.coding.me/index10.html">10</a></li>
+                        <li class=""><a href="http://muxueqz.coding.me/index11.html">11</a></li>
+                        <li class=""><a href="http://muxueqz.coding.me/index12.html">12</a></li>
+                        <li class=""><a href="http://muxueqz.coding.me/index13.html">13</a></li>
+                        <li class=""><a href="http://muxueqz.coding.me/index14.html">14</a></li>
+                        <li class=""><a href="http://muxueqz.coding.me/index15.html">15</a></li>
+                        <li class="next"><a href="http://muxueqz.coding.me/index7.html">Next &rarr;</a></li>
+        </ul>
+        </div>
+
+        </div><!--/span-->
+
+                <div class="span3 well sidebar-nav" id="sidebar">
+<li class="nav-header"><h4><i class="icon-search"></i>Google Search</h4></li>
+<script>
+  (function() {
+    var cx = '015843441167976195048:WMX571863674';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+<ul class="nav nav-list">
+<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
+    <li><i class="icon-external-link"></i><a href="http://zhangwenli.com/blog/">羡辙杂俎</a></li>
+    <li><i class="icon-external-link"></i><a href="http://python.org">Python.org</a></li>
+
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="http://muxueqz.coding.me/category/Python.html">
+    <i class="icon-folder-open icon-large"></i>Python
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/misc.html">
+    <i class="icon-folder-open icon-large"></i>misc
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/nim.html">
+    <i class="icon-folder-open icon-large"></i>nim
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/旧文.html">
+    <i class="icon-folder-open icon-large"></i>旧文
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/桌面应用.html">
+    <i class="icon-folder-open icon-large"></i>桌面应用
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/生活.html">
+    <i class="icon-folder-open icon-large"></i>生活
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/系统运维.html">
+    <i class="icon-folder-open icon-large"></i>系统运维
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/阅读.html">
+    <i class="icon-folder-open icon-large"></i>阅读
+</a>
+</li>
+
+<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+
+<!-- UY BEGIN -->
+<div id="uyan_list_time_frame"></div>
+<script type="text/javascript" id="UYScriptTime" src="http://v1.uyan.cc/js/iframe_time_list.js?UYUserId=1656589&rankType=time" async=""></script>
+<!-- UY END -->
+
+<!-- UJian Button BEGIN -->
+<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?type=slide&uid=1656589"></script>
+<!-- UJian Button END -->
+
+<!-- Place this tag where you want the badge to render. -->
+<div class="g-plus" data-height="69" data-href="//plus.google.com/104598852475031863065?rel=author"></div>
+<!-- Place this tag where you want the +1 button to render. -->
+<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+<!-- Place this tag after the last badge tag. -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'zh-CN'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>							
+
+</ul>        </div><!--/.well -->
+
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <address id="about">
+                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
+                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
+        </address><!-- /#about -->
+
+        <p>The theme is from <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
+                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+	var pageTracker = _gat._getTracker("UA-33825897-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://muxueqz.coding.me/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="http://muxueqz.coding.me/theme/js/bootstrap.min.js"></script>
+  </body>
+</html>

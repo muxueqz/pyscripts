@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+  <head>
+       <meta charset="utf-8">
+    <title>mysql运维常用命令</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="http://muxueqz.coding.me/theme/css/bootstrap.min.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="http://muxueqz.coding.me/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="http://muxueqz.coding.me/theme/css/font-awesome.css" rel="stylesheet">
+
+    <link href="http://muxueqz.coding.me/theme/css/pygments.css" rel="stylesheet">
+    <link href="http://muxueqz.coding.me/theme/css/local.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="http://muxueqz.coding.me/theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="http://muxueqz.coding.me/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://muxueqz.coding.me/theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://muxueqz.coding.me/theme/images/apple-touch-icon-114x114.png">
+
+    <link href="http://muxueqz.coding.me/all.atom.xml" type="application/atom+xml" rel="alternate" title="聊逍遥兮容与 ATOM Feed" />
+
+   <meta name="author"   content="muxueqz" />
+   <meta name="keywords" content="" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="http://muxueqz.coding.me/index.html">聊逍遥兮容与 </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/Python.html">
+						<i class="icon-folder-open icon-large"></i>Python
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/misc.html">
+						<i class="icon-folder-open icon-large"></i>misc
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/nim.html">
+						<i class="icon-folder-open icon-large"></i>nim
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/旧文.html">
+						<i class="icon-folder-open icon-large"></i>旧文
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/桌面应用.html">
+						<i class="icon-folder-open icon-large"></i>桌面应用
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/生活.html">
+						<i class="icon-folder-open icon-large"></i>生活
+					</a>
+                  </li>
+                  <li class="active">
+                    <a href="http://muxueqz.coding.me/category/系统运维.html">
+						<i class="icon-folder-open icon-large"></i>系统运维
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/阅读.html">
+						<i class="icon-folder-open icon-large"></i>阅读
+					</a>
+                  </li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="http://muxueqz.coding.me/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                                <li><a href="http://muxueqz.coding.me/start-page.html"><i class="icon-th-list"></i>留言板</a></li>
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to mysql运维常用命令">
+                                        mysql运维常用命令
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2010-12-28T08:11:51+08:00">
+        <i class="icon-calendar"></i>二 28 十二月 2010
+</abbr>
+<span class="label">By</span>
+<a href="http://muxueqz.coding.me/author/muxueqz.html"><i class="icon-user"></i>muxueqz</a>
+<span class="label">Category</span>
+<a href="http://muxueqz.coding.me/category/系统运维.html"><i class="icon-folder-open"></i>系统运维</a>.
+
+
+</footer><!-- /.post-info -->                </div>
+                <p>使用兼容mysql323的方式备份</p>
+<pre class="literal-block">
+mysqldump ,--compatible=mysql323
+Mysql表引擎更改为InnoDB
+alter table $TABLENAME type=InnoDB
+链接数据库
+mysql -h localhost -u username -p password;
+备份整个库
+mysqldump -u $USER -p $DBNAME&gt; $FILENAME
+备份单个表或几个表
+mysqldump --opt --add-drop-table -u $USER -p $DBNAME $TABLE1 $TABLE2&gt; $FILENAME
+恢复数据库
+shell&gt; mysqladmin -h $HOST -u $USER -p create $DBNAME
+shell&gt; mysql -h $HOST -u $USER -p $DBNAME &lt;$FILENAME
+显示所有数据库
+show databases;
+选定数据库
+use database\_name ;
+查看所有表
+show tables;
+查看所有表状态(引擎等)
+show tables status;
+查看表中内容
+select \* from table\_name;
+查看用户信息
+SELECT host, user FROM mysql.user where user='用户名';
+查看所有用户
+select \* from mysql.user
+查看用户权限
+show grants for '$USER'&#64;'localhost';
+添加用户(无再授权的权限)
+GRANT ALL PRIVILEGES ON $DBNAME.\* TO $USER&#64;$IP IDENTIFIED BY '$PASSWORD';
+添加用户(有再授权的权限)
+（如 GRANT ALL PRIVILEGES ON \*.\* TO user&#64;IP IDENTIFIED BY 'password' WITH GRANT OPTION; ）
+GRANT ALL PRIVILEGES ON $DBNAME.\* TO $USER&#64;$IP IDENTIFIED BY '$PASSWORD' WITH GRANT OPTION;
+（如 GRANT ALL PRIVILEGES ON \*.\* TO user&#64;IP IDENTIFIED BY 'password' WITH GRANT OPTION; ）
+SQL常用语句：
+查询
+SELECT column1,columns2,...FROM table\_name WHERE conditions
+插入
+INSERT INTO table\_name (column1,column2,...) VALUES ( value1,value2, ...)
+更新
+UPDATE table\_name SET column1='xxx' WHERE conditoins
+删除
+DELETE FROM table\_name WHERE conditions
+添加主键
+create unique index groupId on TaskGroup(groupId) ;
+替换，当表中有唯一主键的时候replace=delect+insert
+replace into Goods(id,type,name,price,description,discarded,deal,sell,maxoverlapm,level,usetype,bindtype,usetime,cdTime,locationtype,url,impacttype,putact,parabola,hittype,stricken,confine,movetype,validpoints,spreadpoints,sellPrice) value('110040008','11004','黄金眼镜',520,'采用黄金制作而成的眼镜，只有贵族的人才能拥有',1,1,1,1,0,'1',0,0,0,4,'res/item/11/004/110040008.swf',0,0,0,0,0,0,0,0,0,130);
+
+设置变量，不需重启即可生效配置。
+set 可以使用几种语法形式来设置或检索全局或会话变量。下面的例子使用了sort\_buffer\_sizeas作为示例变量名。
+要想设置一个GLOBAL变量的值，使用下面的语法：
+mysql&gt; SET GLOBAL sort\_buffer\_size=value;
+mysql&gt; SET &#64;&#64;global.sort\_buffer\_size=value;
+要想设置一个SESSION变量的值，使用下面的语法：
+mysql&gt; SET SESSION sort\_buffer\_size=value;
+mysql&gt; SET &#64;&#64;session.sort\_buffer\_size=value;
+mysql&gt; SET sort\_buffer\_size=value;
+LOCAL是SESSION的同义词。
+</pre>
+<dl class="docutils">
+<dt>如果设置变量时不指定GLOBAL、SESSION或者LOCAL，默认使用SESSION。参见13.5.3节，“SET语法”。</dt>
+<dd>要想检索一个GLOBAL变量的值，使用下面的语法：</dd>
+</dl>
+<pre class="literal-block">
+mysql&gt; SELECT &#64;&#64;global.sort\_buffer\_size;
+mysql&gt; SHOW GLOBAL VARIABLES LIKE 'sort\_buffer\_size';
+要想检索一个SESSION变量的值，使用下面的语法：
+mysql&gt; SELECT &#64;&#64;sort\_buffer\_size;
+mysql&gt; SELECT &#64;&#64;session.sort\_buffer\_size;
+mysql&gt; SHOW SESSION VARIABLES LIKE 'sort\_buffer\_size';
+这里，LOCAL也是SESSION的同义词。
+当你用SELECT &#64;&#64;var\_name搜索一个变量时(也就是说，不指定global.、session.或者local.)，MySQL返回SESSION值（如果存在），否则返回GLOBAL值。
+对于SHOW VARIABLES，如果不指定GLOBAL、SESSION或者LOCAL，MySQL返回SESSION值。
+</pre>
+<p>当设置GLOBAL变量需要GLOBAL关键字但检索时不需要它们的原因是防止将来出现问题。如果我们移除一个与某个GLOBAL变量具有相同名字的SESSION变量，具有SUPER权限的客户可能会意外地更改GLOBAL变量而不是它自己的连接的SESSION变量。如果我们添加一个与某个GLOBAL变量具有相同名字的SESSION变量，想更改GLOBAL变量的客户可能会发现只有自己的SESSION变量被更改了。</p>
+<blockquote>
+mysql详细内容可查询mysql5.1参考手册
+网址：[[<a class="reference external" href="http://dev.mysql.com/doc/refman/5.1/zh/index.html">http://dev.mysql.com/doc/refman/5.1/zh/index.html</a>]]</blockquote>
+
+                </div><!-- /.entry-content -->
+
+                <div class="comments">
+<!-- Duoshuo Comment BEGIN ->
+        <div class="ds-thread"></div>
+        <script type="text/javascript">
+        var duoshuoQuery = {short_name:"linuxzh"};
+        (function() {
+                var ds = document.createElement('script');
+                ds.type = 'text/javascript';ds.async = true;
+                ds.src = 'http://static.duoshuo.com/embed.js';
+                ds.charset = 'UTF-8';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+        </script>
+<!- Duoshuo Comment END -->
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" id="UYScript" src="http://v1.uyan.cc/js/iframe.js?UYUserId=1656589" async=""></script>
+<!-- UY END -->
+        </article>
+</section>
+        </div><!--/span-->
+
+                <div class="span3 well sidebar-nav" id="sidebar">
+<li class="nav-header"><h4><i class="icon-search"></i>Google Search</h4></li>
+<script>
+  (function() {
+    var cx = '015843441167976195048:WMX571863674';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+<ul class="nav nav-list">
+<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
+    <li><i class="icon-external-link"></i><a href="http://zhangwenli.com/blog/">羡辙杂俎</a></li>
+    <li><i class="icon-external-link"></i><a href="http://python.org">Python.org</a></li>
+
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="http://muxueqz.coding.me/category/Python.html">
+    <i class="icon-folder-open icon-large"></i>Python
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/misc.html">
+    <i class="icon-folder-open icon-large"></i>misc
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/nim.html">
+    <i class="icon-folder-open icon-large"></i>nim
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/旧文.html">
+    <i class="icon-folder-open icon-large"></i>旧文
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/桌面应用.html">
+    <i class="icon-folder-open icon-large"></i>桌面应用
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/生活.html">
+    <i class="icon-folder-open icon-large"></i>生活
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/系统运维.html">
+    <i class="icon-folder-open icon-large"></i>系统运维
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/阅读.html">
+    <i class="icon-folder-open icon-large"></i>阅读
+</a>
+</li>
+
+<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+
+<!-- UY BEGIN -->
+<div id="uyan_list_time_frame"></div>
+<script type="text/javascript" id="UYScriptTime" src="http://v1.uyan.cc/js/iframe_time_list.js?UYUserId=1656589&rankType=time" async=""></script>
+<!-- UY END -->
+
+<!-- UJian Button BEGIN -->
+<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?type=slide&uid=1656589"></script>
+<!-- UJian Button END -->
+
+<!-- Place this tag where you want the badge to render. -->
+<div class="g-plus" data-height="69" data-href="//plus.google.com/104598852475031863065?rel=author"></div>
+<!-- Place this tag where you want the +1 button to render. -->
+<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+<!-- Place this tag after the last badge tag. -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'zh-CN'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>							
+
+</ul>        </div><!--/.well -->
+
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <address id="about">
+                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
+                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
+        </address><!-- /#about -->
+
+        <p>The theme is from <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
+                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+	var pageTracker = _gat._getTracker("UA-33825897-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://muxueqz.coding.me/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="http://muxueqz.coding.me/theme/js/bootstrap.min.js"></script>
+  </body>
+</html>

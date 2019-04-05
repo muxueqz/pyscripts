@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+  <head>
+       <meta charset="utf-8">
+    <title>聊逍遥兮容与 - 系统运维</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="http://muxueqz.coding.me/theme/css/bootstrap.min.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="http://muxueqz.coding.me/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="http://muxueqz.coding.me/theme/css/font-awesome.css" rel="stylesheet">
+
+    <link href="http://muxueqz.coding.me/theme/css/pygments.css" rel="stylesheet">
+    <link href="http://muxueqz.coding.me/theme/css/local.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="http://muxueqz.coding.me/theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="http://muxueqz.coding.me/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://muxueqz.coding.me/theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://muxueqz.coding.me/theme/images/apple-touch-icon-114x114.png">
+
+    <link href="http://muxueqz.coding.me/all.atom.xml" type="application/atom+xml" rel="alternate" title="聊逍遥兮容与 ATOM Feed" />
+
+   <meta name="description" content="muxueqz (明源) 的博客，使用python和Linux进行数据分析">
+   <meta name="keywords" content="虚拟化, kvm, linux, 日志统计, python, 数据挖掘, 数据分析">
+   <meta name="author" content="muxueqz">
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="http://muxueqz.coding.me/index.html">聊逍遥兮容与 </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/旧文.html">
+						<i class="icon-folder-open icon-large"></i>旧文
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/misc.html">
+						<i class="icon-folder-open icon-large"></i>misc
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/nim.html">
+						<i class="icon-folder-open icon-large"></i>nim
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/Python.html">
+						<i class="icon-folder-open icon-large"></i>Python
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/生活.html">
+						<i class="icon-folder-open icon-large"></i>生活
+					</a>
+                  </li>
+                  <li class="active">
+                    <a href="http://muxueqz.coding.me/category/系统运维.html">
+						<i class="icon-folder-open icon-large"></i>系统运维
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/阅读.html">
+						<i class="icon-folder-open icon-large"></i>阅读
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/桌面应用.html">
+						<i class="icon-folder-open icon-large"></i>桌面应用
+					</a>
+                  </li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="http://muxueqz.coding.me/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                                <li><a href="http://muxueqz.coding.me/start-page.html"><i class="icon-th-list"></i>留言板</a></li>
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+        <div class="article">
+                <h1><a href="http://muxueqz.coding.me/virtual_platform.html">分享虚拟化平台</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2011-07-01T03:23:27+08:00">
+        <i class="icon-calendar"></i>五 01 七月 2011
+</abbr>
+<span class="label">By</span>
+<a href="http://muxueqz.coding.me/author/muxueqz.html"><i class="icon-user"></i>muxueqz</a>
+<span class="label">Category</span>
+<a href="http://muxueqz.coding.me/category/系统运维.html"><i class="icon-folder-open"></i>系统运维</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><dl class="docutils">
+<dt>1、Proxmox Virtual Environment</dt>
+<dd>项目主页：<a class="reference external" href="http://pve.proxmox.com/wiki/Main_Page">http://pve.proxmox.com/wiki/Main_Page</a>
+介绍：
+-支持容器(OpenVZ)及全虚拟化(KVM)</dd>
+<dt>-裸金属安装(使用ISO安装，安装后即可使用，不需要先安装基本系统再安装虚拟化软件)</dt>
+<dd>-提供Web控制台(包含中文)
+-包含备份/恢复/实时迁移/虚拟化集群
+-开源
+2、OpenNode Cloud Platform
+项目主页：<a class="reference external" href="http://opennode.activesys.org">http://opennode.activesys.org</a>
+介绍：
+-支持容器(OpenVZ)及全虚拟化(KVM)</dd>
+<dt>-裸金属安装(使用ISO安装，安装后即可使用，不需要先安装基本系统再安装虚拟化软件)</dt>
+<dd>-包含Web控制台(名叫FuncMan)
+-开源</dd>
+</dl>
+
+                        <a class="btn primary xsmall" href="http://muxueqz.coding.me/virtual_platform.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="http://muxueqz.coding.me/unison.html">双向同步利器-unison</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2011-06-29T10:18:05+08:00">
+        <i class="icon-calendar"></i>三 29 六月 2011
+</abbr>
+<span class="label">By</span>
+<a href="http://muxueqz.coding.me/author/muxueqz.html"><i class="icon-user"></i>muxueqz</a>
+<span class="label">Category</span>
+<a href="http://muxueqz.coding.me/category/系统运维.html"><i class="icon-folder-open"></i>系统运维</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><ul class="simple">
+<li>开源</li>
+<li>多平台支持(windows/Linux)</li>
+<li>简单快速</li>
+<li>类似rsync的算法</li>
+</ul>
+
+                        <a class="btn primary xsmall" href="http://muxueqz.coding.me/unison.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="http://muxueqz.coding.me/sogou_explorer_linux.html">Linux中的教育网加速器</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2011-06-17T03:42:26+08:00">
+        <i class="icon-calendar"></i>五 17 六月 2011
+</abbr>
+<span class="label">By</span>
+<a href="http://muxueqz.coding.me/author/muxueqz.html"><i class="icon-user"></i>muxueqz</a>
+<span class="label">Category</span>
+<a href="http://muxueqz.coding.me/category/系统运维.html"><i class="icon-folder-open"></i>系统运维</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><dl class="docutils">
+<dt>前因：</dt>
+<dd>上次6.12去厦门大学的fjlug活动，不满教育网的速度，为下次作准备。
+原理：
+其实就是利用搜狗提供的全网加速功能
+项目链接：<a class="reference external" href="https://code.google.com/p/sogou-explorer-linux/">https://code.google.com/p/sogou-explorer-linux/</a>
+简要说明：
+下载<a class="reference external" href="http://sogou-explorer-linux.googlecode.com/files/sogou-explorer-linux.7z">sogou-explorer-linux.7z</a>
+解压后进入
+<tt class="docutils literal">cd <span class="pre">sogou-explorer-linux</span></tt></dd>
+<dt>`` ./accelerator.sh(将搜狗浏览器放到后台中，需要安装alltray)或./start.sh(会启动搜狗浏览器界面)``</dt>
+<dd>在你的浏览器中设置代理为127.0.0.1:8081即可使用。</dd>
+</dl>
+
+                        <a class="btn primary xsmall" href="http://muxueqz.coding.me/sogou_explorer_linux.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="http://muxueqz.coding.me/s5-opera-fix.html">解决s5与opera 11的兼容性问题</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2011-06-16T03:20:57+08:00">
+        <i class="icon-calendar"></i>四 16 六月 2011
+</abbr>
+<span class="label">By</span>
+<a href="http://muxueqz.coding.me/author/muxueqz.html"><i class="icon-user"></i>muxueqz</a>
+<span class="label">Category</span>
+<a href="http://muxueqz.coding.me/category/系统运维.html"><i class="icon-folder-open"></i>系统运维</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>关于s5的介绍：
+英文：<a class="reference external" href="http://en.wikipedia.org/wiki/S5_(file_format)">wiki</a>
+中文：<a class="reference external" href="http://server.linjunhalida.com/blog/article/rst2s5/S5/">http://server.linjunhalida.com/blog/article/rst2s5/S5/</a>
+摘述：
+为什么要用S5?</p>
+<p>作为乐于分享的开发人员, 总是免不了想向其他人介绍一些好玩的东西.
+这个时候, 我们需要写幻灯片, 用展示自己要讲的东西. 其他人往往使用PPT,
+PPT是很好, 但是它是二进制专有格式的, 无法以文本方式编辑,
+也无法进行版本管控, 离开了PPT程序也无法打开, 无法满足我们的需求.
+那么我们应该用什么工具来做幻灯片呢? 在wikipedia上面有 slide工具列表
+来介绍现有的幻灯片工具, 我选择的是 S5 .</p>
+<p>那么S5有什么好处呢?</p>
+<p>纯文本</p>
+<p>html</p>
+<p>纯文本, 直观, 清爽, 方便编写以及后期的维护. 文件本身其实是html格式的,
+利用其他javascript, css之类的设置弄成slide的效果. 本身方便分发以及发布,
+再也不用超级大的PPT工具啦!</p>
+<p><tt class="docutils literal">sed <span class="pre">-i</span> <span class="pre">s/&quot;('Opera')</span> &gt; <span class="pre">-1&quot;/&quot;('Opera' …</span></tt></p>
+                        <a class="btn primary xsmall" href="http://muxueqz.coding.me/s5-opera-fix.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="http://muxueqz.coding.me/opera_fanfou_xiami.html">Opera 扩展推荐之饭否/虾米电台</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2011-05-18T02:45:31+08:00">
+        <i class="icon-calendar"></i>三 18 五月 2011
+</abbr>
+<span class="label">By</span>
+<a href="http://muxueqz.coding.me/author/muxueqz.html"><i class="icon-user"></i>muxueqz</a>
+<span class="label">Category</span>
+<a href="http://muxueqz.coding.me/category/系统运维.html"><i class="icon-folder-open"></i>系统运维</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>虾米电台插件，如需标注是否喜欢该歌曲，请先登陆虾米网再重新打开电台。</p>
+<blockquote>
+虾米电台 for Opera，Rojalus制作，非官方，用的是官方的Flash插件。问题反馈：<a class="reference external" href="mailto:Rojalus&#64;163.com">Rojalus&#64;163.com</a>。如需标注是否喜欢该歌曲，请先登陆虾米网再重新打开电台。</blockquote>
+<p>_ <img alt="xiami" src="https://addons.opera.com/addons/extensions/details/xia-mi-dian-tai/0.1/?display=en#feedback-form" /></p>
+<p>_ <img alt="image0" src="https://addons.opera.com/media/extensions/53/5453/0.1-rev1/images/snap1.png" /> <img alt="image1" src="https://addons.opera.com/media/extensions/53/5453/0.1-rev1/images/snap2.png" /> <img alt="image2" src="https://addons.opera.com/media/extensions/53/5453/0.1-rev1/images/snap3.png" /></p>
+<pre class="literal-block">
+饭否扩展-饭兜
+饭兜是一款用于 Opera 的小巧智能的饭否扩展. 想要第一时间知道谁&#64;了你?
+想要随时随地的分享? 来试试我们的歌剧魅影 (The Phantom of The Opera) 吧~
+
+饭兜能够定时联络饭否服务器, 帮你看看有没有好友&#64;了你; 没人搭理你? 正好, 免得有人妨碍你刷屏.. 通过饭兜, 你可以随时发表你的想法.  膨胀你的吐槽欲望吧——无需鼠标操作, Ctrl+Enter 就能快速发推. 可选的 Wap/iPhone 版极简清爽页面, 所有消息囊括其中. 不光这些 …</pre>
+                        <a class="btn primary xsmall" href="http://muxueqz.coding.me/opera_fanfou_xiami.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="http://muxueqz.coding.me/arch_uswsusp.html">ArchLinux休眠快速启动</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2011-05-08T05:26:28+08:00">
+        <i class="icon-calendar"></i>日 08 五月 2011
+</abbr>
+<span class="label">By</span>
+<a href="http://muxueqz.coding.me/author/muxueqz.html"><i class="icon-user"></i>muxueqz</a>
+<span class="label">Category</span>
+<a href="http://muxueqz.coding.me/category/系统运维.html"><i class="icon-folder-open"></i>系统运维</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><dl class="docutils">
+<dt>休眠的特点：</dt>
+<dd><ul class="first last simple">
+<li>状态保存到硬盘</li>
+<li>启动快</li>
+<li>可以立刻恢复到工作状态</li>
+</ul>
+</dd>
+<dt>睡眠的特点：</dt>
+<dd><ul class="first last simple">
+<li>状态保存到内存</li>
+<li>对内存供电</li>
+<li>省电</li>
+</ul>
+</dd>
+</dl>
+<p>AUR安装uswsusp</p>
+<pre class="literal-block">
+wget http://aur.archlinux.org/packages/uswsusp-git/uswsusp-git.tar.gz
+tar xvf uswsusp-git.tar.gz
+cd uswsusp-git
+sudo makepkg --asroot
+pacman -U uswsusp-git-\*-i686.pkg.tar\*
+#这时就可以s2ram来睡眠(保存在内存中，只对内存供电)了
+#修改/etc/mkinitcpio.conf
+#在HOOKS中添加uresume，如下：
+HOOKS=&quot;base udev autodetect pata …</pre>
+                        <a class="btn primary xsmall" href="http://muxueqz.coding.me/arch_uswsusp.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="http://muxueqz.coding.me/zimbra_maillist.html">zimbra邮件列表</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2011-04-12T09:51:09+08:00">
+        <i class="icon-calendar"></i>二 12 四月 2011
+</abbr>
+<span class="label">By</span>
+<a href="http://muxueqz.coding.me/author/muxueqz.html"><i class="icon-user"></i>muxueqz</a>
+<span class="label">Category</span>
+<a href="http://muxueqz.coding.me/category/系统运维.html"><i class="icon-folder-open"></i>系统运维</a>.
+
+
+<span class="label">Tags</span>
+	<a href="http://muxueqz.coding.me/tag/zimbra.html"><i class="icon-tag"></i>zimbra</a>
+	<a href="http://muxueqz.coding.me/tag/邮件服务器.html"><i class="icon-tag"></i>邮件服务器</a>
+	<a href="http://muxueqz.coding.me/tag/server.html"><i class="icon-tag"></i>server</a>
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>zimbra中的邮件列表就是发送名单……</p>
+
+                        <a class="btn primary xsmall" href="http://muxueqz.coding.me/zimbra_maillist.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="http://muxueqz.coding.me/zimbra_batch_add_user.html">zimbra小技巧之批量添加用户</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2011-04-06T10:03:40+08:00">
+        <i class="icon-calendar"></i>三 06 四月 2011
+</abbr>
+<span class="label">By</span>
+<a href="http://muxueqz.coding.me/author/muxueqz.html"><i class="icon-user"></i>muxueqz</a>
+<span class="label">Category</span>
+<a href="http://muxueqz.coding.me/category/系统运维.html"><i class="icon-folder-open"></i>系统运维</a>.
+
+
+<span class="label">Tags</span>
+	<a href="http://muxueqz.coding.me/tag/zimbra.html"><i class="icon-tag"></i>zimbra</a>
+	<a href="http://muxueqz.coding.me/tag/邮件服务器.html"><i class="icon-tag"></i>邮件服务器</a>
+	<a href="http://muxueqz.coding.me/tag/server.html"><i class="icon-tag"></i>server</a>
+</footer><!-- /.post-info --></div>
+                <div class="summary"><pre class="literal-block">
+NAMELIST=`cat userlist.txt`
+DOMAIN=email.com
+PASSWD=111111
+ZMPROV=/opt/zimbra/bin/zmprov
+for NAME in $NAMELIST
+do
+$ZMPROV ca $NAME&#64;$DOMAIN $PASSWD
+done
+</pre>
+<p>userlist.txt格式如下：</p>
+<pre class="literal-block">
+name1
+name2
+</pre>
+
+                        <a class="btn primary xsmall" href="http://muxueqz.coding.me/zimbra_batch_add_user.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+
+        <div class="pagination">
+        <ul>
+                        <li class="prev"><a href="http://muxueqz.coding.me/category/xi-tong-yun-wei.html">&larr; Previous</a></li>
+                        <li class=""><a href="http://muxueqz.coding.me/category/xi-tong-yun-wei.html">1</a></li>
+                        <li class="active"><a href="http://muxueqz.coding.me/category/xi-tong-yun-wei2.html">2</a></li>
+                        <li class=""><a href="http://muxueqz.coding.me/category/xi-tong-yun-wei3.html">3</a></li>
+                        <li class=""><a href="http://muxueqz.coding.me/category/xi-tong-yun-wei4.html">4</a></li>
+                        <li class=""><a href="http://muxueqz.coding.me/category/xi-tong-yun-wei5.html">5</a></li>
+                        <li class=""><a href="http://muxueqz.coding.me/category/xi-tong-yun-wei6.html">6</a></li>
+                        <li class=""><a href="http://muxueqz.coding.me/category/xi-tong-yun-wei7.html">7</a></li>
+                        <li class=""><a href="http://muxueqz.coding.me/category/xi-tong-yun-wei8.html">8</a></li>
+                        <li class=""><a href="http://muxueqz.coding.me/category/xi-tong-yun-wei9.html">9</a></li>
+                        <li class=""><a href="http://muxueqz.coding.me/category/xi-tong-yun-wei10.html">10</a></li>
+                        <li class="next"><a href="http://muxueqz.coding.me/category/xi-tong-yun-wei3.html">Next &rarr;</a></li>
+        </ul>
+        </div>
+
+        </div><!--/span-->
+
+                <div class="span3 well sidebar-nav" id="sidebar">
+<li class="nav-header"><h4><i class="icon-search"></i>Google Search</h4></li>
+<script>
+  (function() {
+    var cx = '015843441167976195048:WMX571863674';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+<ul class="nav nav-list">
+<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
+    <li><i class="icon-external-link"></i><a href="http://zhangwenli.com/blog/">羡辙杂俎</a></li>
+    <li><i class="icon-external-link"></i><a href="http://python.org">Python.org</a></li>
+
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="http://muxueqz.coding.me/category/旧文.html">
+    <i class="icon-folder-open icon-large"></i>旧文
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/misc.html">
+    <i class="icon-folder-open icon-large"></i>misc
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/nim.html">
+    <i class="icon-folder-open icon-large"></i>nim
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/Python.html">
+    <i class="icon-folder-open icon-large"></i>Python
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/生活.html">
+    <i class="icon-folder-open icon-large"></i>生活
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/系统运维.html">
+    <i class="icon-folder-open icon-large"></i>系统运维
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/阅读.html">
+    <i class="icon-folder-open icon-large"></i>阅读
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/桌面应用.html">
+    <i class="icon-folder-open icon-large"></i>桌面应用
+</a>
+</li>
+
+<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+
+<!-- UY BEGIN -->
+<div id="uyan_list_time_frame"></div>
+<script type="text/javascript" id="UYScriptTime" src="http://v1.uyan.cc/js/iframe_time_list.js?UYUserId=1656589&rankType=time" async=""></script>
+<!-- UY END -->
+
+<!-- UJian Button BEGIN -->
+<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?type=slide&uid=1656589"></script>
+<!-- UJian Button END -->
+
+<!-- Place this tag where you want the badge to render. -->
+<div class="g-plus" data-height="69" data-href="//plus.google.com/104598852475031863065?rel=author"></div>
+<!-- Place this tag where you want the +1 button to render. -->
+<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+<!-- Place this tag after the last badge tag. -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'zh-CN'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>							
+
+</ul>        </div><!--/.well -->
+
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <address id="about">
+                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
+                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
+        </address><!-- /#about -->
+
+        <p>The theme is from <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
+                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+	var pageTracker = _gat._getTracker("UA-33825897-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://muxueqz.coding.me/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="http://muxueqz.coding.me/theme/js/bootstrap.min.js"></script>
+  </body>
+</html>

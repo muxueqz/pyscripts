@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>聊逍遥兮容与 - Python</title><link href="http://muxueqz.coding.me/" rel="alternate"></link><link href="http://muxueqz.coding.me/feeds/Python.atom.xml" rel="self"></link><id>http://muxueqz.coding.me/</id><updated>2013-08-17T13:20:00+08:00</updated><entry><title>分布式任务队列Celery快速上手</title><link href="http://muxueqz.coding.me/celery_quickstart.html" rel="alternate"></link><published>2013-08-17T13:20:00+08:00</published><updated>2013-08-17T13:20:00+08:00</updated><author><name>muxueqz</name></author><id>tag:muxueqz.coding.me,2013-08-17:/celery_quickstart.html</id><summary type="html">&lt;h2&gt;Celery介绍&lt;/h2&gt;
+&lt;p&gt;celery(芹菜)是一个异步任务队列/基于分布式消息传递的作业队列。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;它侧重于实时操作，但对调度支持也很好。&lt;/li&gt;
+&lt;li&gt;celery用于生产系统每天处理数以百万计的任务。&lt;/li&gt;
+&lt;li&gt;celery是用Python编写的，但该协议可以在任何语言实现。它也可以用其他语言通过webhooks实现。&lt;/li&gt;
+&lt;li&gt;目前已知有php/ruby/nodejs的实现&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;为什么用Celery?&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;异步&lt;/li&gt;
+&lt;li&gt;耗时久的事儿可以扔给 Worker 处理，处理完可以触发子任务提醒&lt;/li&gt;
+&lt;li&gt;天然的并发能力(多进程/协程)!&lt;/li&gt;
+&lt;li&gt;非常方便添加 Worker 来增强处理能力&lt;/li&gt;
+&lt;li&gt;Celery提供了Web方式的监控/报警，这样，我们就可以监控每个任务的情况了&lt;/li&gt;
+&lt;li&gt;出现错误可以自动处理/重试&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;角色介绍&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Brokers&lt;/strong&gt;: 提供队列服务，Celery支持的Brokers有:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;RabbitMQ(&lt;strong&gt;推荐&lt;/strong&gt;)&lt;/li&gt;
+&lt;li&gt;Redis&lt;/li&gt;
+&lt;li&gt;MongoDB&lt;/li&gt;
+&lt;li&gt;Beanstalk&lt;/li&gt;
+&lt;li&gt;CouchDB&lt;/li&gt;
+&lt;li&gt;SQLAlchemy(MySQL/PostgreSQL/Sqlite/Oracle)&lt;/li&gt;
+&lt;li&gt;Amazon SQS等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Worker …&lt;/strong&gt;&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Celery介绍&lt;/h2&gt;
+&lt;p&gt;celery(芹菜)是一个异步任务队列/基于分布式消息传递的作业队列。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;它侧重于实时操作，但对调度支持也很好。&lt;/li&gt;
+&lt;li&gt;celery用于生产系统每天处理数以百万计的任务。&lt;/li&gt;
+&lt;li&gt;celery是用Python编写的，但该协议可以在任何语言实现。它也可以用其他语言通过webhooks实现。&lt;/li&gt;
+&lt;li&gt;目前已知有php/ruby/nodejs的实现&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;为什么用Celery?&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;异步&lt;/li&gt;
+&lt;li&gt;耗时久的事儿可以扔给 Worker 处理，处理完可以触发子任务提醒&lt;/li&gt;
+&lt;li&gt;天然的并发能力(多进程/协程)!&lt;/li&gt;
+&lt;li&gt;非常方便添加 Worker 来增强处理能力&lt;/li&gt;
+&lt;li&gt;Celery提供了Web方式的监控/报警，这样，我们就可以监控每个任务的情况了&lt;/li&gt;
+&lt;li&gt;出现错误可以自动处理/重试&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;角色介绍&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Brokers&lt;/strong&gt;: 提供队列服务，Celery支持的Brokers有:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;RabbitMQ(&lt;strong&gt;推荐&lt;/strong&gt;)&lt;/li&gt;
+&lt;li&gt;Redis&lt;/li&gt;
+&lt;li&gt;MongoDB&lt;/li&gt;
+&lt;li&gt;Beanstalk&lt;/li&gt;
+&lt;li&gt;CouchDB&lt;/li&gt;
+&lt;li&gt;SQLAlchemy(MySQL/PostgreSQL/Sqlite/Oracle)&lt;/li&gt;
+&lt;li&gt;Amazon SQS等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Worker&lt;/strong&gt;: 真正干活的，实际运行任务的节点。&lt;/p&gt;
+&lt;h2&gt;开始 Celery 的第一步&lt;/h2&gt;
+&lt;h3&gt;选择你的 Broker&lt;/h3&gt;
+&lt;p&gt;在你正式开始使用 Celery 之前，你需要选择、安装并运行一个 broker。&lt;/p&gt;
+&lt;p&gt;Broker 是一种负责接收、发送任务消息（task messages）的服务&lt;/p&gt;
+&lt;p&gt;你可以从以下几种 broker 中选择一个：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;RabbitMQ : [[http://www.rabbitmq.com/]]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;功能完整、安全、饱经实践检验的 broker。如果对你而言，不丢失消息非常重要，RabbitMQ 将是你最好的选择。&lt;/p&gt;
+&lt;p&gt;请查看 [[/技术分享/Celery/broker-installation]] 以便获得更多关于 RabbitMQ 安装和配置相关的信息。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Redis : [[http://redis.io/]]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;也是一个功能完整的 broker，但电源故障或异常将导致数据丢失。&lt;/p&gt;
+&lt;p&gt;请查看 [[/技术分享/Celery/otherqueues-redis]] 以便配置相关的信息。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;数据库&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;不推荐使用数据库作为消息队列，但在非常小的应用中可以使用。Celery 可以使用 SQLAlchemy 和 Django ORMS。请查看 [[/技术分享/Celery/otherqueues-sqlalchemy]] 或 [[/技术分享/Celery/otherqueues-django]]。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;更多其他选择。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;除了上面列出的以外，还有其他可以选择的传输实现，例如 CouchDB, Beanstalk, MongoDB, and SQS。请查阅 Kombu 的文档以便获得更多信息。&lt;/p&gt;
+&lt;h3&gt;安装Celery&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#安装celery&lt;/span&gt;
+$ pip install celery
+&lt;span class="c1"&gt;#安装时区的模块，不然会有时间慢8小时的问题&lt;/span&gt;
+$ pip install pytz
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;创建一个简单“任务”（Task）&lt;/h3&gt;
+&lt;p&gt;在这个教程里，我们将创建一个简单的“任务”（Task） —— 把两个数加起来。通常，我们在 Python 的模块中定义“任务”。&lt;/p&gt;
+&lt;p&gt;按照惯例，我们将调用模块 &lt;code&gt;file&lt;/code&gt;:&lt;code&gt;tasks.py&lt;/code&gt;，看起来会像这个样子：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;file&lt;/code&gt;:&lt;code&gt;tasks.py&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;celery.task&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;task&lt;/span&gt;
+&lt;span class="nd"&gt;@task&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;此时， &lt;code&gt;@task&lt;/code&gt; 装饰器实际上创建了一个继承自 :class:&lt;code&gt;~celery.task.base.Task&lt;/code&gt; 的“类”（class）。除非需要修改“任务类”的缺省行为，否则我们推荐只通过装饰器定义“任务”（这是我们推崇的最佳实践）。&lt;/p&gt;
+&lt;p&gt;seealso:
+    关于创建任务和任务类的完整文档可以在 &lt;code&gt;../userguide/tasks&lt;/code&gt; 中找到。&lt;/p&gt;
+&lt;h3&gt;配置&lt;/h3&gt;
+&lt;p&gt;Celery 使用一个配置模块来进行配置。这个模块缺省北命名为 :file:&lt;code&gt;celeryconfig.py&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;为了能被 import，这个配置模块要么存在于当前目录，要么包含在 Python 路径中。&lt;/p&gt;
+&lt;p&gt;同时，你可以通过使用环境变量 &lt;code&gt;CELERY_CONFIG_MODULE&lt;/code&gt; 来随意修改这个配置文件的名字。&lt;/p&gt;
+&lt;p&gt;现在来让我们创建配置文件 &lt;code&gt;celeryconfig.py&lt;/code&gt;.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;配置如何连接 broker（例子中我们使用 RabbitMQ）:
+        BROKER_URL = "amqp:''guest:guest@localhost:5672''"&lt;/li&gt;
+&lt;li&gt;定义用于存储元数据（metadata）和返回值（return values）的后端:
+        CELERY_RESULT_BACKEND = "amqp"&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;AMQP 后端缺省是非持久化的，你只能取一次结果（一条消息）。&lt;/p&gt;
+&lt;p&gt;可以阅读 :ref:&lt;code&gt;conf-result-backend&lt;/code&gt; 了解可以使用的后端清单和相关参数。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;最后，我们列出 worker 需要 import 的模块，包括你的任务。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我们只有一个刚开始添加的任务模块 :file:&lt;code&gt;tasks.py&lt;/code&gt;::&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    CELERY_IMPORTS = (&amp;quot;tasks&amp;quot;, )
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这就行了。&lt;/p&gt;
+&lt;p&gt;你还有更多的选项可以使用，例如：你期望使用多少个进程来并行处理（:setting:&lt;code&gt;CELERY_CONCURRENCY&lt;/code&gt; 设置），或者使用持久化的结果保存后端。可以阅读 :ref:&lt;code&gt;configuration&lt;/code&gt; 查看更多的选项。&lt;/p&gt;
+&lt;p&gt;note:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;你可以也使用
+
+    $ celery -A tasks worker --loglevel=info
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;运行 worker 服务器&lt;/h3&gt;
+&lt;p&gt;为了方便测试，我们将在前台运行 worker 服务器，这样我们就能在终端上看到 celery 上发生的事情:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ celeryd --loglevel&lt;span class="o"&gt;=&lt;/span&gt;INFO
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;在生产环境中，也许你希望将 worker 在后台以守护进程的方式运行。如果你希望这么做，你可以利用平台或者类似于 &lt;code&gt;supervisord&lt;/code&gt;_ (查阅 :ref:&lt;code&gt;daemonizing&lt;/code&gt; 以获得更多信息） 的工具来实现。&lt;/p&gt;
+&lt;p&gt;可以通过下列命令行获得完整的命令参数清单:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$  celeryd --help
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;supervisord: [[http://supervisord.org]]&lt;/p&gt;
+&lt;h3&gt;执行任务（task）&lt;/h3&gt;
+&lt;p&gt;我们通过调用 class 类的 &lt;code&gt;~celery.task.base.Task.delay&lt;/code&gt; 方法执行任务。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;~celery.task.base.Task.apply_async&lt;/code&gt; 方法一个非常方便的方法，通过这个方法我们可以充分控制控制任务执行的参数（参见 :ref:&lt;code&gt;guide-executing&lt;/code&gt;）。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;tasks&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;AsyncResult&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;889143&lt;/span&gt;&lt;span class="n"&gt;a6&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;39&lt;/span&gt;&lt;span class="n"&gt;a2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mf"&gt;4e52&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;837&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;d80d33efb22d&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;此时，任务已经被发送到了消息 broker。直到有 worker 服务器取走并执行了这个任务，否则 Broker 将一直保存这个消息。&lt;/p&gt;
+&lt;p&gt;现在我们可以使用任务返回类 &lt;code&gt;~celery.result.AsyncResult&lt;/code&gt; 来查看 worker 的日志，看看到底发生了什么。如果你配置了一个结果存储类 &lt;code&gt;~celery.result.AsyncResult&lt;/code&gt; 来保存任务状态，任务执行完毕可获得返回值；任务执行失败则可获得异常/回调等信息。&lt;/p&gt;
+&lt;h3&gt;Shell里执行任务&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;#add 为任务名&lt;/span&gt;
+$ celery call add
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;保留结果&lt;/h3&gt;
+&lt;p&gt;如果你想跟踪任务状态，Celery 就需要把这些状态信息发送并存储到某处。你可以使用多种后端来达到这个目的: SQLAlchemy/Django ORM, Memcached, Redis,AMQP, MongoDB, Tokyo Tyrant 和 Redis —— 甚至你可以定义你自己的。&lt;/p&gt;
+&lt;p&gt;在这里，我们将使用 &lt;code&gt;amqp&lt;/code&gt; 作为保存结果的后端来存储状态消息。可以通过 {{{CELERY_RESULT_BACKEND}}} 来修改后端选项，你可以用于保存结果后端的选项有:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;CELERY_RESULT_BACKEND&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;amqp&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;#: 我们希望结果最多保存 5 分钟。 &lt;/span&gt;
+&lt;span class="c1"&gt;#: 注意，这个特性需要 2.1.1 以上版本 RabbitMQ 才能支持。&lt;/span&gt;
+&lt;span class="c1"&gt;#: 如果你使用的是早期版本的 RabbitMQ，请注释下面这行。&lt;/span&gt;
+&lt;span class="n"&gt;CELERY_TASK_RESULT_EXPIRES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;300&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;请通过阅读 Celery/任务结果后端 获得更多相关配置的信息。&lt;/p&gt;
+&lt;p&gt;现在，我们配置好了保存结果的后端，让我们重新来执行任务。我们再次使用类 &lt;code&gt;~celery.result.AsyncResult&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这里是一些你可以如何处理结果的方法:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ready&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="c1"&gt;# 任务是否已经执行，如果已经执行完毕，返回值为 True。&lt;/span&gt;
+&lt;span class="bp"&gt;False&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="c1"&gt;# 任务还没完成，尚无返回值。&lt;/span&gt;
+&lt;span class="bp"&gt;None&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;   &lt;span class="c1"&gt;# 等待，直到任务执行完毕并返回值。&lt;/span&gt;
+&lt;span class="mi"&gt;8&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="c1"&gt;# 直接返回结果，不产生任何错误。&lt;/span&gt;
+&lt;span class="mi"&gt;8&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;successful&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="c1"&gt;# 任务是否成功执行，如果成功则返回值 True。&lt;/span&gt;
+&lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果任务执行过程中发生了异常，&lt;code&gt;result.successful()&lt;/code&gt; 的返回值将会变成 &lt;code&gt;False&lt;/code&gt;，同时 &lt;code&gt;result.result&lt;/code&gt; 将包含一个由 task 产生的异常实例。&lt;/p&gt;</content><category term="python"></category><category term="redis"></category><category term="celery"></category><category term="server"></category></entry><entry><title>Python代码追踪(类似于bash -x的效果)</title><link href="http://muxueqz.coding.me/pythontrace.html" rel="alternate"></link><published>2012-08-22T20:54:03+08:00</published><updated>2012-08-22T20:54:03+08:00</updated><author><name>muxueqz</name></author><id>tag:muxueqz.coding.me,2012-08-22:/pythontrace.html</id><summary type="html">&lt;hr class="docutils" /&gt;
+&lt;p&gt;这个我居然找了一年。。。&amp;#64;_&amp;#64;&lt;/p&gt;
+&lt;p&gt;#详细追踪&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+python -m trace --trace script.py
+&lt;/pre&gt;
+&lt;p&gt;#显示调用了哪些函数&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+python -m trace --trackcalls script.py
+&lt;/pre&gt;
+&lt;!-- rst code generated by txt2tags 2.6.971 (http://txt2tags.org) --&gt;
+&lt;!-- cmdline: txt2tags -t rst -o /data/software/muxueqztools/py/myblog/blog-new/src/python_trace.rst t2t/python_trace.t2t --&gt;
+</summary><content type="html">&lt;hr class="docutils" /&gt;
+&lt;p&gt;这个我居然找了一年。。。&amp;#64;_&amp;#64;&lt;/p&gt;
+&lt;p&gt;#详细追踪&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+python -m trace --trace script.py
+&lt;/pre&gt;
+&lt;p&gt;#显示调用了哪些函数&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+python -m trace --trackcalls script.py
+&lt;/pre&gt;
+&lt;!-- rst code generated by txt2tags 2.6.971 (http://txt2tags.org) --&gt;
+&lt;!-- cmdline: txt2tags -t rst -o /data/software/muxueqztools/py/myblog/blog-new/src/python_trace.rst t2t/python_trace.t2t --&gt;
+</content><category term="python"></category></entry><entry><title>pyifstat</title><link href="http://muxueqz.coding.me/pyifstat.html" rel="alternate"></link><published>2011-03-03T02:46:54+08:00</published><updated>2011-03-03T02:46:54+08:00</updated><author><name>muxueqz</name></author><id>tag:muxueqz.coding.me,2011-03-03:/pyifstat.html</id><summary type="html">&lt;dl class="docutils"&gt;
+&lt;dt&gt;python写的ifstat，用于查看当前带宽(流量)占用情况&lt;/dt&gt;
+&lt;dd&gt;借用ifstat的介绍：
+ifstat is a tool to report network interfaces bandwidth just like
+vmstat/iostat do for other system counters. It can monitor local
+interfaces by polling the kernel counters&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;pre class="literal-block"&gt;
+#!/usr/bin/env python
+import time
+import sys
+if len(sys.argv) &amp;gt; 1:
+INTERFACE = sys.argv[1 …&lt;/pre&gt;</summary><content type="html">&lt;dl class="docutils"&gt;
+&lt;dt&gt;python写的ifstat，用于查看当前带宽(流量)占用情况&lt;/dt&gt;
+&lt;dd&gt;借用ifstat的介绍：
+ifstat is a tool to report network interfaces bandwidth just like
+vmstat/iostat do for other system counters. It can monitor local
+interfaces by polling the kernel counters&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;pre class="literal-block"&gt;
+#!/usr/bin/env python
+import time
+import sys
+if len(sys.argv) &amp;gt; 1:
+INTERFACE = sys.argv[1]
+else:
+INTERFACE = 'eth0'
+STATS = []
+print 'Interface:',INTERFACE
+def rx():
+ifstat = open('/proc/net/dev').readlines()
+for interface in ifstat:
+if INTERFACE in interface:
+stat = float(interface.split()[1])
+STATS[0:] = [stat]
+def tx():
+ifstat = open('/proc/net/dev').readlines()
+for interface in ifstat:
+if INTERFACE in interface:
+stat = float(interface.split()[9])
+STATS[1:] = [stat]
+print 'In Out'
+rx()
+tx()
+while True:
+time.sleep(1)
+rxstat\_o = list(STATS)
+rx()
+tx()
+RX = float(STATS[0])
+RX\_O = rxstat\_o[0]
+TX = float(STATS[1])
+TX\_O = rxstat\_o[1]
+RX\_RATE = round((RX - RX\_O)/1024/1024,3)
+TX\_RATE = round((TX - TX\_O)/1024/1024,3)
+print RX\_RATE ,'MB ',TX\_RATE ,'MB'
+&lt;/pre&gt;
+&lt;p&gt;文件在 &lt;a class="reference external" href="http://openwrt-desktop.googlecode.com/files/pyifstat.py"&gt;http://openwrt-desktop.googlecode.com/files/pyifstat.py&lt;/a&gt;&lt;/p&gt;
+</content><category term="python"></category><category term="ifstat"></category></entry></feed>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+  <head>
+       <meta charset="utf-8">
+    <title>远程X-Window</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="http://muxueqz.coding.me/theme/css/bootstrap.min.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="http://muxueqz.coding.me/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="http://muxueqz.coding.me/theme/css/font-awesome.css" rel="stylesheet">
+
+    <link href="http://muxueqz.coding.me/theme/css/pygments.css" rel="stylesheet">
+    <link href="http://muxueqz.coding.me/theme/css/local.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="http://muxueqz.coding.me/theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="http://muxueqz.coding.me/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://muxueqz.coding.me/theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://muxueqz.coding.me/theme/images/apple-touch-icon-114x114.png">
+
+    <link href="http://muxueqz.coding.me/all.atom.xml" type="application/atom+xml" rel="alternate" title="聊逍遥兮容与 ATOM Feed" />
+
+   <meta name="author"   content="muxueqz" />
+   <meta name="keywords" content="" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="http://muxueqz.coding.me/index.html">聊逍遥兮容与 </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/Python.html">
+						<i class="icon-folder-open icon-large"></i>Python
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/misc.html">
+						<i class="icon-folder-open icon-large"></i>misc
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/nim.html">
+						<i class="icon-folder-open icon-large"></i>nim
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/旧文.html">
+						<i class="icon-folder-open icon-large"></i>旧文
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/桌面应用.html">
+						<i class="icon-folder-open icon-large"></i>桌面应用
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/生活.html">
+						<i class="icon-folder-open icon-large"></i>生活
+					</a>
+                  </li>
+                  <li class="active">
+                    <a href="http://muxueqz.coding.me/category/系统运维.html">
+						<i class="icon-folder-open icon-large"></i>系统运维
+					</a>
+                  </li>
+                  <li >
+                    <a href="http://muxueqz.coding.me/category/阅读.html">
+						<i class="icon-folder-open icon-large"></i>阅读
+					</a>
+                  </li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="http://muxueqz.coding.me/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                                <li><a href="http://muxueqz.coding.me/start-page.html"><i class="icon-th-list"></i>留言板</a></li>
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to 远程X-Window">
+                                        远程X-Window
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2009-06-15T12:15:44+08:00">
+        <i class="icon-calendar"></i>一 15 六月 2009
+</abbr>
+<span class="label">By</span>
+<a href="http://muxueqz.coding.me/author/muxueqz.html"><i class="icon-user"></i>muxueqz</a>
+<span class="label">Category</span>
+<a href="http://muxueqz.coding.me/category/系统运维.html"><i class="icon-folder-open"></i>系统运维</a>.
+
+
+</footer><!-- /.post-info -->                </div>
+                <dl class="docutils">
+<dt>X-Window本身支持远程连接，所以简单配置一下便可远程连接上了</dt>
+<dd><p class="first">注：X-Window远程连接太慢，如需连接图形界面的Linux，建议使用nxserver!
+必须先开启X，下面是查看X的ID</p>
+<blockquote>
+ps aux |grep X</blockquote>
+<p>设置DISPLAY</p>
+<blockquote>
+export DISPLAY=’:0′</blockquote>
+<p>开启远程服务，+是允许所有连接</p>
+<blockquote>
+xhost +</blockquote>
+<p class="last">GDM远程
+XDMCP即“X Display Manager Control Protocol”，是一种网络协议。由它来建立图形客户端程序与X Window服务器的连接与通信。
+XDM即“X Display Manager”，由它来启动X Window服务器，并管理图形客户端程序的登录、会话、启动窗口管理器（KDE、Gnome）等。KDE和Gnome也提供了自己的xdm的实现，分别叫kdm和gdm。
+1.gdm具体配置方法</p>
+</dd>
+</dl>
+<pre class="literal-block">
+[root&#64;mis-redhat ~]# cd /etc/gdm/
+[root&#64;mis-redhat gdm]# ls
+custom.conf locale.alias PostLogin PreSession XKeepsCrashing
+Init modules PostSession securitytokens.conf Xsession
+[root&#64;mis-redhat gdm]#cp -p custom.conf gdm.conf
+</pre>
+<p>其中custom.conf为默认配置，可将此文件复制为gdm.conf，又或可直接在此文件中修改配置，均可生效。</p>
+<pre class="literal-block">
+    [root&#64;mis-redhat gdm]#vim gdm.conf
+    [xdmcp]
+    Enable=1
+    [root&#64;mis-redhat gdm]# gdm-restart
+
+检查177端口是否有开启
+</pre>
+<pre class="literal-block">
+    [root&#64;mis-redhat gdm]# netstat -ntpul \| grep 177
+    udp 0 0 0.0.0.0:177 0.0.0.0:\* 6056/gdm-binary
+
+简单的配置后，即可使用xmanager连接X了。。。
+如果有开启防火墙的话，需要开启此端口
+
+    [root&#64;mis-redhat gdm]# iptables -A INPUT -p udp -s 0.0.0.0/0 -d 0.0.0.0/0 –dport 177 -j ACCEPT
+</pre>
+<p>gdm默认是不允许root用户登录的，如果需要启用允许root用户登录，则可在gdm.conf中如此修改</p>
+<pre class="literal-block">
+    [security]
+    AllowRemoteRoot=true
+    #如需启用gdm的日志功能
+    [debug]
+    Enable=true
+
+所有对gdm.conf配置文件修改后都需记得重启gdm
+
+    [root&#64;mis-redhat gdm]# gdm-restart
+
+如果想关闭gdm,也很简单
+
+    [root&#64;mis-redhat gdm]# gdm-stop
+
+另外，gdm配置方法除了修改配置文件外，还可用图形界面进行设置
+
+    [root&#64;mis-redhat gdm]# gdmsetup
+
+2.配置xfs
+xfs的配置文件是/etc/X11/fs/config，内容如下：
+</pre>
+<pre class="literal-block">
+#
+# Default font server configuration file for Mandrake Linux workstation
+#
+# allow a max of 10 clients to connect to this font server
+client-limit = 10
+# when a font server reaches its limit, start up a new one
+clone-self = off
+# alternate font servers for clients to use
+#alternate-servers = foo:7101,bar:7102
+# where to look for fonts
+# Some of these are commented out, i.e. the TrueType and Type1
+# directories in /usr/share, because they arent forced to be
+# installed alongside X.
+#
+catalogue = /usr/X11R6/lib/X11/fonts/misc:unscaled,
+/usr/X11R6/lib/X11/fonts/75dpi:unscaled,
+/usr/X11R6/lib/X11/fonts/100dpi:unscaled,
+/usr/X11R6/lib/X11/fonts/misc:unscaled,
+/usr/X11R6/lib/X11/fonts/Type1,
+/usr/X11R6/lib/X11/fonts/Speedo,
+/usr/X11R6/lib/X11/fonts/mdk:unscaled,
+/usr/share/fonts/default/Type1,
+/usr/share/fonts/ttf/big5,
+/usr/share/fonts/ttf/gb2312,
+/usr/share/fonts/ttf/decoratives,
+/usr/share/fonts/ttf/western
+# in 12 points, decipoints
+default-point-size = 120
+# 100 x 100 and 75 x 75
+default-resolutions = 75,75,100,100
+# how to log errors
+use-syslog = on
+# For security, don’t listen to TCP ports by default.
+no-listen = tcp
+</pre>
+<dl class="docutils">
+<dt>在配置文件中可以定义最大客户端连接数量，这里缺省是10。配置文件中也指明了字体文件的位置，特别注意包含了中文字体，否则在客户端无法正确显示中文字体。</dt>
+<dd>其中需将#no-listen = tcp的注释去掉，启用tcp监听，其默认端口为7100
+使用如下命令来重启xfs：</dd>
+</dl>
+<pre class="literal-block">
+    service xfs stop
+    service xfs start
+
+xfs启动成功后，可以使用netstat -ln命令来确认7100端口已绑定：
+
+    tcp 0 0 0.0.0.0:7100 0.0.0.0:\* LISTEN
+</pre>
+
+                </div><!-- /.entry-content -->
+
+                <div class="comments">
+<!-- Duoshuo Comment BEGIN ->
+        <div class="ds-thread"></div>
+        <script type="text/javascript">
+        var duoshuoQuery = {short_name:"linuxzh"};
+        (function() {
+                var ds = document.createElement('script');
+                ds.type = 'text/javascript';ds.async = true;
+                ds.src = 'http://static.duoshuo.com/embed.js';
+                ds.charset = 'UTF-8';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+        </script>
+<!- Duoshuo Comment END -->
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" id="UYScript" src="http://v1.uyan.cc/js/iframe.js?UYUserId=1656589" async=""></script>
+<!-- UY END -->
+        </article>
+</section>
+        </div><!--/span-->
+
+                <div class="span3 well sidebar-nav" id="sidebar">
+<li class="nav-header"><h4><i class="icon-search"></i>Google Search</h4></li>
+<script>
+  (function() {
+    var cx = '015843441167976195048:WMX571863674';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+<ul class="nav nav-list">
+<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
+    <li><i class="icon-external-link"></i><a href="http://zhangwenli.com/blog/">羡辙杂俎</a></li>
+    <li><i class="icon-external-link"></i><a href="http://python.org">Python.org</a></li>
+
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="http://muxueqz.coding.me/category/Python.html">
+    <i class="icon-folder-open icon-large"></i>Python
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/misc.html">
+    <i class="icon-folder-open icon-large"></i>misc
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/nim.html">
+    <i class="icon-folder-open icon-large"></i>nim
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/旧文.html">
+    <i class="icon-folder-open icon-large"></i>旧文
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/桌面应用.html">
+    <i class="icon-folder-open icon-large"></i>桌面应用
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/生活.html">
+    <i class="icon-folder-open icon-large"></i>生活
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/系统运维.html">
+    <i class="icon-folder-open icon-large"></i>系统运维
+</a>
+</li>
+<li>
+<a href="http://muxueqz.coding.me/category/阅读.html">
+    <i class="icon-folder-open icon-large"></i>阅读
+</a>
+</li>
+
+<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+
+<!-- UY BEGIN -->
+<div id="uyan_list_time_frame"></div>
+<script type="text/javascript" id="UYScriptTime" src="http://v1.uyan.cc/js/iframe_time_list.js?UYUserId=1656589&rankType=time" async=""></script>
+<!-- UY END -->
+
+<!-- UJian Button BEGIN -->
+<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?type=slide&uid=1656589"></script>
+<!-- UJian Button END -->
+
+<!-- Place this tag where you want the badge to render. -->
+<div class="g-plus" data-height="69" data-href="//plus.google.com/104598852475031863065?rel=author"></div>
+<!-- Place this tag where you want the +1 button to render. -->
+<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+<!-- Place this tag after the last badge tag. -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'zh-CN'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>							
+
+</ul>        </div><!--/.well -->
+
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <address id="about">
+                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
+                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
+        </address><!-- /#about -->
+
+        <p>The theme is from <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
+                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+	var pageTracker = _gat._getTracker("UA-33825897-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://muxueqz.coding.me/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="http://muxueqz.coding.me/theme/js/bootstrap.min.js"></script>
+  </body>
+</html>
