@@ -3573,7 +3573,7 @@ VMware Workstation for Linux，用着用着经常会发现，回到Host系统后
 目前只能临时解决一下，运行setxkbmap一下，重新加载键盘布局。
 注意：如果你加载过.Xmodmap，则需要在运行setxkbmap后重新xmodemap .Xmodmap
 &lt;/pre&gt;
-</content></entry><entry><title>Alsa-utils使用方法</title><link href="http://muxueqz.coding.me/alsa-utils.html" rel="alternate"></link><published>2009-07-12T14:54:44+08:00</published><updated>2009-07-12T14:54:44+08:00</updated><author><name>muxueqz</name></author><id>tag:muxueqz.coding.me,2009-07-12:/alsa-utils.html</id><summary type="html">&lt;p&gt;注: 前面大部分为转载&amp;nbsp;&lt;a class="reference external" href="http://www.turbolinux.com"&gt;http://www.turbolinux.com&lt;/a&gt;.cn中的Wiki&lt;/p&gt;
+</content></entry><entry><title>Alsa-utils使用方法</title><link href="http://muxueqz.coding.me/Alsa-utils%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95.html" rel="alternate"></link><published>2009-07-12T14:54:44+08:00</published><updated>2009-07-12T14:54:44+08:00</updated><author><name>muxueqz</name></author><id>tag:muxueqz.coding.me,2009-07-12:/Alsa-utils使用方法.html</id><summary type="html">&lt;p&gt;注: 前面大部分为转载&amp;nbsp;&lt;a class="reference external" href="http://www.turbolinux.com"&gt;http://www.turbolinux.com&lt;/a&gt;.cn中的Wiki&lt;/p&gt;
 &lt;p&gt;一.alsa-utils介绍&lt;/p&gt;
 &lt;p&gt;ALSA是kernel中的一个声音驱动程序.它包括alsa核心和其他声卡的驱动.
 alsa-utils是alsa的一个工具包,里面包含有声卡测试和音频编辑的工具.

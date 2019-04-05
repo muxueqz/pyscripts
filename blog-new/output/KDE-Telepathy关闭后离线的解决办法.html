@@ -2,7 +2,7 @@
 <html lang="zh_cn">
   <head>
        <meta charset="utf-8">
-    <title>聊逍遥兮容与 - desktop</title>
+    <title>KDE-Telepathy关闭后离线的解决办法</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Le styles -->
@@ -47,9 +47,8 @@
 
     <link href="http://muxueqz.coding.me/all.atom.xml" type="application/atom+xml" rel="alternate" title="聊逍遥兮容与 ATOM Feed" />
 
-   <meta name="description" content="muxueqz (明源) 的博客，使用python和Linux进行数据分析">
-   <meta name="keywords" content="虚拟化, kvm, linux, 日志统计, python, 数据挖掘, 数据分析">
-   <meta name="author" content="muxueqz">
+   <meta name="author"   content="muxueqz" />
+   <meta name="keywords" content="kde, desktop, im" />
 
   </head>
 
@@ -87,7 +86,7 @@
 						<i class="icon-folder-open icon-large"></i>旧文
 					</a>
                   </li>
-                  <li >
+                  <li class="active">
                     <a href="http://muxueqz.coding.me/category/桌面应用.html">
 						<i class="icon-folder-open icon-large"></i>桌面应用
 					</a>
@@ -123,57 +122,20 @@
     <div class="container-fluid">
       <div class="row">
         <div class="span9" id="content">
-        <div class="article">
-                <h1><a href="http://muxueqz.coding.me/xpra.html">xpra</a></h1>
-                <div class="well small"><footer class="post-info">
-<span class="label">Date</span>
-<abbr class="published" title="2012-10-21T14:53:32+08:00">
-        <i class="icon-calendar"></i>日 21 十月 2012
-</abbr>
-<span class="label">By</span>
-<a href="http://muxueqz.coding.me/author/muxueqz.html"><i class="icon-user"></i>muxueqz</a>
-<span class="label">Category</span>
-<a href="http://muxueqz.coding.me/category/桌面应用.html"><i class="icon-folder-open"></i>桌面应用</a>.
-
-
-<span class="label">Tags</span>
-	<a href="http://muxueqz.coding.me/tag/ssh.html"><i class="icon-tag"></i>ssh</a>
-	<a href="http://muxueqz.coding.me/tag/desktop.html"><i class="icon-tag"></i>desktop</a>
-</footer><!-- /.post-info --></div>
-                <div class="summary"><div class="section" id="id1">
-<h2>介绍</h2>
-<p>xpra=screen for X</p>
-<ol class="arabic simple">
-<li>可以提供像screen/tmux一样对X会话进行管理</li>
-<li>支持远程(TCP/SSH)，换言之，这也是一种远程桌面方案</li>
-</ol>
-</div>
-<div class="section" id="id2">
-<h2>优点</h2>
-<ul class="simple">
-<li>支持多平台：Mac OSX/Windows/Android/Solaris/FreeBSD/OpenBSD</li>
-<li>多客户端并发连接</li>
-<li>GUI运行向导</li>
-<li>零copy和更低的CPU占用，更快的编码器</li>
-<li>系统托盘菜单方便调整和查看状态</li>
-<li>支持x264/vpx/jpeg/png等多种压缩编码</li>
-<li>转发系统铃声和通知</li>
-<li>支持多屏扩展</li>
-<li>开启/禁用pulseaudio/剪切板同步</li>
-</ul>
-</div>
-<div class="section" id="id3">
-<h2>安装</h2>
-<ul class="simple">
-<li>Deb系: <a class="reference external" href="https://winswitch.org/downloads/debian-repository.html">https://winswitch.org/downloads/debian-repository.html</a></li>
-<li>RPM系: <a class="reference external" href="https://winswitch.org/downloads/rpm-repository.html">https://winswitch.org/downloads/rpm-repository.html …</a></li></ul></div>
-                        <a class="btn primary xsmall" href="http://muxueqz.coding.me/xpra.html">more ...</a>
-                </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="http://muxueqz.coding.me/KDE-Telepathy关闭后离线的解决办法.html">KDE-Telepathy关闭后离线的解决办法</a></h1>
-                <div class="well small"><footer class="post-info">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to KDE-Telepathy关闭后离线的解决办法">
+                                        KDE-Telepathy关闭后离线的解决办法
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
 <span class="label">Date</span>
 <abbr class="published" title="2012-08-22T21:55:03+08:00">
         <i class="icon-calendar"></i>三 22 八月 2012
@@ -188,8 +150,8 @@
 	<a href="http://muxueqz.coding.me/tag/kde.html"><i class="icon-tag"></i>kde</a>
 	<a href="http://muxueqz.coding.me/tag/desktop.html"><i class="icon-tag"></i>desktop</a>
 	<a href="http://muxueqz.coding.me/tag/im.html"><i class="icon-tag"></i>im</a>
-</footer><!-- /.post-info --></div>
-                <div class="summary"><hr class="docutils" />
+</footer><!-- /.post-info -->                </div>
+                <hr class="docutils" />
 <div class="section" id="id1">
 <h2>1. 介绍</h2>
 <p>新开发的KDE即时通讯程序telepathy-kde
@@ -211,11 +173,28 @@ go_offline_when_closing=false
 <!-- cmdline: txt2tags -t rst -o /data/software/muxueqztools/py/myblog/blog-new/src/ktp_offine.rst t2t/ktp_offine.t2t -->
 </div>
 
-                        <a class="btn primary xsmall" href="http://muxueqz.coding.me/KDE-Telepathy关闭后离线的解决办法.html">more ...</a>
-                </div>
-        </div>
-        <hr />
+                </div><!-- /.entry-content -->
 
+                <div class="comments">
+<!-- Duoshuo Comment BEGIN ->
+        <div class="ds-thread"></div>
+        <script type="text/javascript">
+        var duoshuoQuery = {short_name:"linuxzh"};
+        (function() {
+                var ds = document.createElement('script');
+                ds.type = 'text/javascript';ds.async = true;
+                ds.src = 'http://static.duoshuo.com/embed.js';
+                ds.charset = 'UTF-8';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+        </script>
+<!- Duoshuo Comment END -->
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" id="UYScript" src="http://v1.uyan.cc/js/iframe.js?UYUserId=1656589" async=""></script>
+<!-- UY END -->
+        </article>
+</section>
         </div><!--/span-->
 
                 <div class="span3 well sidebar-nav" id="sidebar">
