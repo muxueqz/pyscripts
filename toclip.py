@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # coding=utf8
+import ctypes
 
 from PyQt5 import QtGui, QtCore
 import sys
@@ -9,10 +10,7 @@ def inclip(data, target):
 
     clipboard = app.clipboard()
     mimeData = QtCore.QMimeData()
-    # data = 'xx'
-    # mimeData.setHtml(data)
     mimeData.setData(target, data.encode('utf8'))
-    # mimeData.setText(data)
     clipboard.setMimeData(mimeData)
 
     # important. let it wait for new clips (text & etc)
@@ -26,19 +24,24 @@ if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser(description='Process some integers.')
-    # parser.add_argument('integers', metavar='N', type=int, nargs='+',
-    #                     help='an integer for the accumulator')
     parser.add_argument('-i', '-in', '--input', default=True, action='store_true')
     parser.add_argument('-o', '-out', '--output', default=False, action='store_true')
-    parser.add_argument('-t', '--target', default='text/plain', type=str)
-    # parser.add_argument('--sum', dest='accumulate', action='store_const',
-    #                     const=sum, default=max,
-    #                     help='sum the integers (default: find the max)')
+    parser.add_argument('-silent', '--silent',
+        default=True, action='store_true',
+        help="errors only, run in background (default)"
+    )
+    parser.add_argument('-quiet', '--quiet',
+        default=False, action='store_true',
+        help="run in foreground, show what's happening"
+    )
+
+    parser.add_argument('-t', '-target', '--target', default='text/plain', type=str)
 
     args = parser.parse_args()
-    # print(args.accumulate(args.key))
-    print(args)
 
     data = sys.stdin.read()
+    if args.silent:
+        ctypes.CDLL(None).daemon(0, 0)
+
     if args.input:
         inclip(data, args.target)
