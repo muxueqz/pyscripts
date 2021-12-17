@@ -40,6 +40,10 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     data = sys.stdin.read()
+
+    if args.quiet:
+        args.silent = False
+
     if args.silent:
         ctypes.CDLL(None).daemon(0, 0)
 
