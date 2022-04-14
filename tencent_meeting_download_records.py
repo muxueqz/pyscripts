@@ -44,6 +44,7 @@ async def main():
     #     executablePath="/usr/bin/google-chrome-stable",
     #     headless=False,
     # )
+    # google-chrome --remote-debugging-port=9222 --user-data-dir=/dev/shm/temp-workspaces/tencent_meeting_chrome/
     browser = await connect(browserURL="http://127.1:9222", defaultViewport=None)
 
     page = await browser.newPage()
